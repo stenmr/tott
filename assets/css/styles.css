@@ -8,7 +8,7 @@
 body{
     display: grid;
     grid-template-columns: 20% auto;
-    grid-template-rows: 10% auto 10%;
+    grid-template-rows: 25% auto 10%;
 }
 
 aside{
@@ -22,11 +22,22 @@ nav{
     
 }
 
-nav > h1{
+nav > h1, #logo{
     display: inline;
 }
 
 .products{
     grid-row: 2;
     grid-column: 2;
+}
+
+.category{
+    height: 40px;
+    width: 100%;
+    margin: 10px;
+    text-align: center;
+}
+
+.category:hover{
+    cursor: pointer;
 }
