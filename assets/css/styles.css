@@ -4,3 +4,24 @@
     --main-color: #EDC96D;
     --background-color: #FDF8ED;
 }
+
+.body{
+    display: grid;
+    grid-template-columns: 20% auto;
+    grid-template-rows: 10% auto 10%;
+    grid-template-areas: "header header"
+    "sidebar main"
+    ". .";
+}
+
+.category{
+    grid-area: sidebar;
+}
+
+nav{
+    grid-area: header;
+}
+
+.product-card{
+    grid-area: main;
+}
