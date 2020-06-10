@@ -12,16 +12,17 @@
     <nav>
         <img id="logo" src="../assets/logo.png" alt="Logo" class="logo">
         <h1>TLÜ OTT</h1>
-		<h4>Talutoit otse tootjalt Tallinna Ülikooli</h4>
+
+        <div class="search">
+		    <input type="text" id="search" maxlength="30">
+	    </div>
+
+        <div class="login">
+            <a href="login">Google Sign-In</a>
+        </div>
     </nav>
-	
-	<div class="search">
-		<input type="text" id="search" maxlength="30">
-	</div>
-	
-	<div class="login">
-		<a href="login">Logi sisse</a>
-	</div>
+
+    <h4>Talutoit otse tootjalt Tallinna Ülikooli</h4>
 
     <aside class="category_box">
         <div class="category">Piimatooted ja munad</div>
