@@ -5,17 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>TLÜ OTT</title>
+    <img id="logo" src="../assets/logo.png" alt="Logo" class="logo">
 </head>
 <body>
     <nav>
-        <h1>Tott</h1>
+        <h1>TLÜ OTT</h1>
         <a href="login">Login</a>
     </nav>
 
     <aside>
-        <div class="category">Üks</div>
-        <div class="category">Teine</div>
-        <div class="category">Kolm</div>
+        <div class="category">Piimatooted ja munad</div>
+        <div class="category">Puuviljad</div>
+        <div class="category">Küpsetised</div>
+        <div class="category">Juurviljad ja köögiviljad</div>
+        <div class="category">Hoidised</div>
+        <div class="category">Joogid</div>
+        <div class="category">Seemned ja teraviljad</div>
+        <div class="category">Marjad</div>
+        <div class="category">Liha ja kala</div>
+        
     </aside>
 
     <div class="product-card">
