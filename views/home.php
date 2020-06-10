@@ -26,6 +26,7 @@
         
     </aside>
 
+    <div class="products">
     <div class="product-card">
         <img src="https://via.placeholder.com/150.png" alt="pilt">
         <h3>Kartul</h3>
@@ -52,6 +53,7 @@
             <output class="amount"></output>
             <div class="plus"></div>
         </div>
+    </div>
     </div>
 </body>
 </html>
