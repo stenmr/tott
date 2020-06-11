@@ -97,6 +97,11 @@ input[type=text] {
     word-wrap: break-word;
 }
 
+
+.add-to-cart, .price{
+    margin: 10px;
+}
+
 .category:hover {
     cursor: pointer;
     background-color: white;
