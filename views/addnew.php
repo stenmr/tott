@@ -1,4 +1,3 @@
-require("head.php");
 <body>
 <h2>Lisa enda toode</h2>
 <form>
@@ -25,7 +24,6 @@ require("head.php");
   <label>Kogus:</label><br>
   <input type="number" id="amount" name="amount"><br>
   <button class="button addproduct">Kinnita</button>
-  
+
 </form>
 </body>
-require("footer.php");
