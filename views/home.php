@@ -17,14 +17,19 @@
         <div class="product-card">
             <img src="https://via.placeholder.com/150.png" alt="pilt">
             <h3>Kartulid</h3>
+            <h3>Kartulid</h3>
+            <div class="price">Siia tuleb hind</div>
             <div class="amount-container">
                 <div class="minus">
                     <?php $icons->get('minus');?>
                 </div>
-                <output class="amount"></output>
+                <input type="text" id="amount" class="amount" value="0" min="0.5" step="0.5">
                 <div class="plus">
                     <?php $icons->get('plus');?>
                 </div>
+            </div>
+            <div class="add-to-cart" >
+               Lisa ostukorvi <?php $icons->get('shopping-cart'); ?>
             </div>
         </div>
         <div class="product-card">
