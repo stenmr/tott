@@ -1,27 +1,5 @@
-<!DOCTYPE html>
-<html lang="et">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
-    <title>TLÜ OTT</title>
-    <link rel="shortcut icon" href="../assets/logo.png" type="image/x-icon"/>
-</head>
-
 <body>
-    <nav>
-        <img src="../assets/logo.png" alt="Logo" class="logo">
-        <h1>TLÜ OTT</h1>
-
-        <input class="search" type="text" maxlength="30">
-
-        <div class="login">
-            <a href="login">Google Sign-In</a>
-        </div>
-    </nav>
-
     <h4>Talutoit otse tootjalt Tallinna Ülikooli</h4>
-
     <aside class="category_box">
         <div class="category">Piimatooted ja munad</div>
         <div class="category">Puuviljad</div>
@@ -65,4 +43,3 @@
     </div>
 
 </body>
-</html>
