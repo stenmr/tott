@@ -10,12 +10,10 @@
 
 <body>
     <nav>
-        <img id="logo" src="../assets/logo.png" alt="Logo" class="logo">
+        <img src="../assets/logo.png" alt="Logo" class="logo">
         <h1>TLÜ OTT</h1>
 
-        <div class="search">
-		    <input type="text" id="search" maxlength="30">
-	    </div>
+        <input class="search" type="text" maxlength="30">
 
         <div class="login">
             <a href="login">Google Sign-In</a>
