@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="add-to-cart">
-                    Lisa ostukorvi <?php $icons->get('shopping-cart'); ?>
+                    <?php $icons->get('shopping-cart'); ?>
                 </div>
             </div>
             <div class="product-card">

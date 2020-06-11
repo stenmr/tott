@@ -14,20 +14,21 @@
 
 body {
     display: grid;
-    grid-template-rows: 5em auto 10%;
+    grid-template-rows: 5em auto;
     grid-template-columns: 100vw;
     margin: 0;
     font-family: "Jost", sans-serif;
     background-color: var(--tint-1);
     color: var(--font-color);
+    min-height: 100vh;
 }
 
-p {
-    font-size: 1.25em;
+p,
+a {
+    font-size: 1.25rem;
 }
 
 aside {
-    grid-row: 2;
     grid-column: 1;
 }
 
@@ -67,14 +68,13 @@ nav > * {
 }
 
 .products {
-    grid-row: 2;
     grid-column: 2;
     margin: 10px;
     display: flex;
 }
 
 .product-card {
-    box-shadow: 0 4px 24px lightgrey;
+    box-shadow: var(--shadow);
     border-radius: .5em;
     height: max-content;
     width: max-content;
@@ -87,6 +87,7 @@ nav > * {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    align-content: center;
     margin: 10px;
 }
 
@@ -105,6 +106,7 @@ nav > * {
     letter-spacing: 2px;
     padding: .5em 0 .5em .5em;
     word-wrap: break-word;
+    border-radius: 4px;
 }
 
 .add-to-cart,
@@ -114,11 +116,11 @@ nav > * {
 
 .category:hover {
     cursor: pointer;
-    background-color: white;
+    background-color: var(--light-gray);
 }
 
 .category_box {
-    background-color: #f2f2f2;
+    box-shadow: var(--shadow);
 }
 
 /* Form ja selle inputid */
@@ -128,12 +130,6 @@ form {
     width: 16em;
     flex-direction: column;
     margin: 3em auto;
-}
-
-form > input,
-div,
-select {
-    margin-bottom: 1em;
 }
 
 input:not([type="file"]):not(.search),

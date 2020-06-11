@@ -1,3 +1,6 @@
+<head>
+    <link rel="stylesheet" type="text/css" href="../assets/css/add.css">
+</head>
 <body>
     <form>
         <h2>Lisa uus toode</h2>

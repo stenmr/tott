@@ -3,3 +3,7 @@
     padding: 3px 0 0 0;
     text-align: center;
 }
+
+.amount-container > div {
+    height: min-content;
+}
