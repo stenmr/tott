@@ -1,7 +1,11 @@
 :root {
     --shadow: 0 4px 24px hsla(0, 0%, 27%, .15);
+    --big-shadow: 0 6px 16px 0 rgba(0, 0, 0, .08);
     --main-color: linear-gradient(-33deg, hsl(133, 48%, 62%), hsl(133, 55%, 62%));
-    --background-color: hsl(133, 48%, 97%);
+    --font-color: #224;
+    --tint-1: #fff;
+    --tint-2: hsl(133, 48%, 97%);
+    --gray: hsla(133, 45%, 67%, .1);
 }
 
 body {
@@ -9,6 +13,8 @@ body {
     grid-template-columns: 20% auto;
     grid-template-rows: 5em auto 10%;
     margin: 0;
+    font-family: "Jost", sans-serif;
+    background-color: var(--tint-1);
 }
 
 aside {
@@ -25,7 +31,7 @@ nav {
 }
 
 nav > * {
-    margin: 1em;
+    margin: 0 .75em;
 }
 
 .logo {
@@ -34,17 +40,15 @@ nav > * {
 
 .search {
     background: url("magnifier.svg") no-repeat 1em 50%;
-    background-color: var(--background-color);
+    background-color: var(--tint-2);
     background-size: 1.5em;
-    box-shadow: var(--shadow);
-    border: none;
+    border: solid 3px var(--gray);
     border-radius: 4em;
+    box-shadow: var(--shadow);
     padding: .75em 1em;
     padding-left: 3em;
     margin-left: auto;
-    margin-right: 1em;
-    max-width: 12.5em;
-    min-width: 1em;
+    margin-right: .75em;
 }
 
 .products {
@@ -59,9 +63,11 @@ nav > * {
 }
 
 .category {
-    height: 40px;
     margin: 10px;
-    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: .5em 0 .5em .5em;
+    word-wrap: break-word;
 }
 
 .category:hover {
