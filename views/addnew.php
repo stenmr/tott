@@ -1,32 +1,37 @@
+<?php $icons = new Feather\Icons; ?>
 <body>
-<form class="add_form">
-<h2>Lisa enda toode</h2>
-  <label>Vali pilt:</label>
-  <input type="file" name="fileToUpload" id="fileToUpload">
-  <br>
-  <label>Toote nimi:</label>
-  <input type="text" id="product_name" name="product_name" class="input_boarder">
-  <label>Kategooria:</label>
-  	  <select name="product" class="input_boarder">
-          <option value="" selected disabled>Vali kategooria</option>
-	      <option value="Piimatooted ja munad">Piimatooted ja munad</option>
-		  <option value="Puuviljad<">Puuviljad</option>
-		  <option value="Kypsetised">Küpsetised</option>
-		  <option value="Juurviljad ja koogiviljad">Juurviljad ja köögiviljad</option>
-		  <option value="Hoidised">Hoidised</option>
-		  <option value="Marjad">Marjad</option>
-		  <option value="Joogid">Joogid</option>
-		  <option value="Seemned ja teraviljad">Seemned ja teraviljad</option>
-		  <option value="Liha ja kala">Liha ja kala</option>
-	  </select>
-	  <br>
-  <label>Hind:</label>
-  <input type="number" step="0.01" id="price" name="price" class="input_boarder" maxlength="5">
-  <button class="unit">kg</button>
-  <button class="unit">tk</button>
-  <label>Kogus:</label>
-  <input type="number" id="amount" name="amount" class="input_boarder">
-  <button class="addproduct">Kinnita</button>
-
-</form>
+    <form>
+        <h2>Lisa enda toode</h2>
+        <div class="upload-container">
+            <input type="file" name="fileToUpload" id="fileToUpload" accept=".png,.jpg,.jpeg">
+            <?php $icons->get('upload');?>
+            <label for="fileToUpload">Lae üles pilt</label>
+        </div>
+        <input type="text" id="product_name" name="product_name" placeholder="Toote nimi">
+        <select name="product">
+            <option selected disabled>Vali kategooria</option>
+            <option value="Piimatooted ja munad">Piimatooted ja munad</option>
+            <option value="Puuviljad<">Puuviljad</option>
+            <option value="Kypsetised">Küpsetised</option>
+            <option value="Juurviljad ja koogiviljad">Juurviljad ja köögiviljad</option>
+            <option value="Hoidised">Hoidised</option>
+            <option value="Marjad">Marjad</option>
+            <option value="Joogid">Joogid</option>
+            <option value="Seemned ja teraviljad">Seemned ja teraviljad</option>
+            <option value="Liha ja kala">Liha ja kala</option>
+        </select>
+        <div>
+            <input type="number" step="0.01" name="price" max="999" placeholder="Hind">
+            <label>€</label>
+        </div>
+        <label>Toote koguse tähistus</label>
+        <div>
+            <input type="radio" id="pc" name="contact" value="pc">
+            <label for="pc">Tükk (tk)</label>
+            <input type="radio" id="kg" name="contact" value="kg">
+            <label for="kg">Kilogramm (kg)</label>
+        </div>
+        <input type="number" name="amount" placeholder="Kogus">
+        <button type="submit">Kinnita</button>
+    </form>
 </body>

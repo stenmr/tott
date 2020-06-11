@@ -1,21 +1,24 @@
 :root {
-    --shadow: 0 4px 24px hsla(0, 0%, 27%, .15);
-    --big-shadow: 0 6px 16px 0 rgba(0, 0, 0, .08);
+    --shadow: 0 4px 8px hsla(0, 0%, 27%, .15);
+    --shadow-alt: 6px 6px 18px 0 rgba(0, 0, 0, .08);
     --main-color: linear-gradient(-33deg, hsl(133, 48%, 62%), hsl(133, 55%, 62%));
+    --main-color-solid: hsl(133, 48%, 62%);
+    --main-color-hover: hsl(133, 48%, 68%);
     --font-color: #224;
     --tint-1: #fff;
     --tint-2: hsl(133, 48%, 97%);
-    --gray: hsla(133, 45%, 67%, .1);
-    --gray-2: rgb(193, 204, 195);
+    --gray: hsl(131, 10%, 78%);
+    --light-gray: hsl(131, 10%, 90%);
 }
 
 body {
     display: grid;
-    grid-template-columns: 20% auto;
     grid-template-rows: 5em auto 10%;
+    grid-template-columns: 100vw;
     margin: 0;
     font-family: "Jost", sans-serif;
     background-color: var(--tint-1);
+    color: var(--font-color);
 }
 
 aside {
@@ -41,15 +44,21 @@ nav > * {
 
 .search {
     background: url("magnifier.svg") no-repeat 1em 50%;
+    font-family: "Jost", sans-serif;
+    font-size: 1.5em;
     background-color: var(--tint-2);
-    background-size: 1.5em;
-    border: solid 3px var(--gray);
-    border-radius: 4em;
-    box-shadow: var(--shadow);
-    padding: .75em 1em;
-    padding-left: 3em;
+    background-size: 1.5rem;
+    border: solid 1px var(--gray);
+    border-radius: 4rem;
+    padding: .5rem 1rem;
+    padding-left: 3.5rem;
     margin-left: auto;
-    margin-right: .75em;
+    margin-right: .75rem;
+}
+
+.products-and-categories-container {
+    display: grid;
+    grid-template-columns: 20% auto;
 }
 
 .products {
@@ -86,66 +95,84 @@ nav > * {
     background-color: #f2f2f2;
 }
 
-.add_form {
+/* Form ja selle inputid */
+
+form {
     display: flex;
+    width: 16em;
     flex-direction: column;
-    grid-row: 2/3;
-    grid-column: 1;
-    margin-left: 3em;
-    margin-top: 1em;
+    margin: 3em auto;
 }
 
-input:not([type="file"]) {
-    border: 2px solid var(--gray-2);
-    padding: 1em .25em;
+form > input,
+div,
+select {
+    margin-bottom: 1em;
+}
+
+input:not([type="file"]):not(.search),
+select {
+    font-family: "Jost", sans-serif;
+    font-size: 1.25em;
+    border: 2px solid var(--gray);
+    border-radius: 0;
+    padding: .5rem .25rem;
     color: black;
-}  
-
-.addproduct{
-    background-color: #b6d9a7;
-    border-radius: 4px;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    margin-top: 15px;
-    margin-bottom: 10px;
 }
 
-.addproduct:hover {
+label {
+    font-size: 1.25em;
+}
+
+input[type="number"] {
+    width: 33%;
+}
+
+/* Faili üleslaadimine ja nupud */
+
+input[type="file"] {
+    width: .1px;
+    height: .1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.upload-container {
+    font-size: 1.25em;
+    padding: .25em;
+    border: 2px solid var(--gray);
+    display: flex;
+    align-items: center;
+    transition: box-shadow, background-color .25s ease;
+}
+
+.upload-container > svg {
+    margin: 0 .66em 0 .33em;
+}
+
+.upload-container > label {
     cursor: pointer;
-    font-weight: bold;
 }
 
-.addproduct:active{
-    background-color: #e7f2e4;
-}
-
-.input_boarder {
-    border: 1px solid #686968;
+button {
+    background-color: var(--main-color-solid);
+    font-family: "Jost", sans-serif;
+    font-size: 1.5em;
+    border: none;
     border-radius: 4px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-  }
-
-  .unit {
-    background-color: #e7f2e4;
-    border-radius: 4px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    padding: 1rem;
+    box-shadow: 0;
+    transition: box-shadow, background-color .25s ease;
 }
 
-.unit:hover {
-    background-color: #b6d9a7;
+button:hover {
     cursor: pointer;
-    font-weight: bold;
+    background-color: var(--main-color-hover);
 }
 
-.unit:active {
-    background-color: #b6d9a7;
-    font-weight: bold;
+.upload-container:hover {
+    cursor: pointer;
+    background-color: var(--light-gray);
 }
