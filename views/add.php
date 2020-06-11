@@ -7,7 +7,7 @@
         <input type="number" name="amount" placeholder="Kogus" max="999">
         <button class="button addproduct">Kinnita</button>
         <p>
-            Ei leidnud sobivat toodet?<a href="/add/new">Lisa enda toode</a>.
+            Ei leidnud sobivat toodet? <a href="/add/new">Lisa enda toode</a>.
         </p>
     </form>
 </body>
