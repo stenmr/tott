@@ -77,26 +77,22 @@ nav > * {
     margin: 0 .75em .75em .75em;
     text-align: center;
 }
-.amount-container{
+
+.amount-container {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     margin: 10px;
 }
 
-.plus:hover, .minus:hover{
+.plus:hover,
+.minus:hover {
     cursor: pointer;
 }
 
-input[type=text] {
-    width: 40px;
-    padding: 3px 0 0 0;
-    text-align: center;
-  }
-
-  .add-to-cart:hover{
-      cursor: pointer;
-  }
+.add-to-cart:hover {
+    cursor: pointer;
+}
 
 .category {
     margin: 10px;
@@ -106,8 +102,8 @@ input[type=text] {
     word-wrap: break-word;
 }
 
-
-.add-to-cart, .price{
+.add-to-cart,
+.price {
     margin: 10px;
 }
 

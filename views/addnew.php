@@ -1,4 +1,7 @@
 <?php $icons = new Feather\Icons; ?>
+<head>
+    <link rel="stylesheet" type="text/css" href="../assets/css/addnew.css">
+</head>
 <body>
     <form>
         <h2>Lisa enda toode</h2>
