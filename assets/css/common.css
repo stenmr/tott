@@ -7,6 +7,7 @@
     --font-color: #224;
     --tint-1: #fff;
     --tint-2: hsl(133, 48%, 97%);
+    --dark-gray: rgb(138, 142, 138);
     --gray: hsl(131, 10%, 78%);
     --light-gray: hsl(131, 10%, 90%);
 }
@@ -138,7 +139,6 @@ select {
     border: 2px solid var(--gray);
     border-radius: 0;
     padding: .5rem .25rem;
-    color: black;
 }
 
 label {
@@ -161,7 +161,7 @@ input[type="file"] {
 }
 
 .upload-container {
-    font-size: 1.25em;
+    font-size: 1.125em;
     padding: .25em;
     border: 2px solid var(--gray);
     display: flex;
@@ -175,6 +175,7 @@ input[type="file"] {
 
 .upload-container > label {
     cursor: pointer;
+    color: var(--dark-gray);
 }
 
 button {
