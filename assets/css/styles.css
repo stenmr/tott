@@ -6,6 +6,7 @@
     --tint-1: #fff;
     --tint-2: hsl(133, 48%, 97%);
     --gray: hsla(133, 45%, 67%, .1);
+    --gray-2: rgb(193, 204, 195);
 }
 
 body {
@@ -85,6 +86,21 @@ nav > * {
     background-color: #f2f2f2;
 }
 
+.add_form {
+    display: flex;
+    flex-direction: column;
+    grid-row: 2/3;
+    grid-column: 1;
+    margin-left: 3em;
+    margin-top: 1em;
+}
+
+input:not([type="file"]) {
+    border: 2px solid var(--gray-2);
+    padding: 1em .25em;
+    color: black;
+}  
+
 .addproduct{
     background-color: #b6d9a7;
     border-radius: 4px;
@@ -132,11 +148,4 @@ nav > * {
 .unit:active {
     background-color: #b6d9a7;
     font-weight: bold;
-}
-
-.add_form {
-    grid-row: 2/3;
-    grid-column: 1;
-    margin-left: 3em;
-    margin-top: 1em;
 }

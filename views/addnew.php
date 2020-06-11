@@ -5,7 +5,7 @@
   <input type="file" name="fileToUpload" id="fileToUpload">
   <br>
   <label>Toote nimi:</label>
-  <input type="text" id="product_name" name="product_name" class="input_boarder"><br>
+  <input type="text" id="product_name" name="product_name" class="input_boarder">
   <label>Kategooria:</label>
   	  <select name="product" class="input_boarder">
           <option value="" selected disabled>Vali kategooria</option>
@@ -23,9 +23,9 @@
   <label>Hind:</label>
   <input type="number" step="0.01" id="price" name="price" class="input_boarder" maxlength="5">
   <button class="unit">kg</button>
-  <button class="unit">tk</button><br>
+  <button class="unit">tk</button>
   <label>Kogus:</label>
-  <input type="number" id="amount" name="amount" class="input_boarder"><br>
+  <input type="number" id="amount" name="amount" class="input_boarder">
   <button class="addproduct">Kinnita</button>
 
 </form>
