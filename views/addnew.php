@@ -34,7 +34,7 @@
             <input type="radio" id="kg" name="contact" value="kg">
             <label for="kg">Kilogramm (kg)</label>
         </div>
-        <input type="number" name="amount" placeholder="Kogus">
+        <input type="number" name="amount" placeholder="Kogus" max="9999" step="1">
         <button type="submit">Kinnita</button>
     </form>
 </body>
