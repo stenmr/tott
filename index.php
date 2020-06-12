@@ -29,6 +29,34 @@ Flight::route('/faq', function () {
     Flight::render("faq.php");
     Flight::render("footer.php");
 });
+Flight::route('/talu', function () {
+    Flight::render("head.php");
+    Flight::render("navbar.php");
+    Flight::render("selleraccount.php");
+    Flight::render("footer.php");
+});
+
+Flight::route('/talu/minu_tooted', function () {
+    Flight::render("head.php");
+    Flight::render("navbar.php");
+    Flight::render("myproducts.php");
+    Flight::render("footer.php");
+});
+
+Flight::route('/talu/minu_kontakt', function () {
+    Flight::render("head.php");
+    Flight::render("navbar.php");
+    Flight::render("sellercontact.php");
+    Flight::render("footer.php");
+});
+
+Flight::route('/talu/minu_tellimused', function () {
+    Flight::render("head.php");
+    Flight::render("navbar.php");
+    Flight::render("sellerorders.php");
+    Flight::render("footer.php");
+});
+
 
 Flight::route('/privacy', function () {
     Flight::render("head.php");
