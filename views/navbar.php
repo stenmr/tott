@@ -4,7 +4,5 @@
 
     <input class="search" type="text" maxlength="30">
 
-    <div class="login">
-        <a href="login">Google Sign-In</a>
-    </div>
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
 </nav>
