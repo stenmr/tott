@@ -57,3 +57,17 @@ a:active {
 a:visited {
     color: black;
 }
+
+#save_contact {
+    margin-top: 1em;
+}
+
+#cancel {
+    background-color: rgb(221, 221, 221);
+}
+
+.order {
+    padding-left: 50px;
+    padding-right: 50vw;
+    text-align: left;
+}

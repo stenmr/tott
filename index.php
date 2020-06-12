@@ -23,17 +23,31 @@ Flight::route('/add/new', function () {
     Flight::render("footer.php");
 });
 
-Flight::route('/konto', function () {
+Flight::route('/talu', function () {
     Flight::render("head.php");
     Flight::render("navbar.php");
-    Flight::render("account.php");
+    Flight::render("selleraccount.php");
     Flight::render("footer.php");
 });
 
-Flight::route('/konto/minu_tooted', function () {
+Flight::route('/talu/minu_tooted', function () {
     Flight::render("head.php");
     Flight::render("navbar.php");
     Flight::render("myproducts.php");
+    Flight::render("footer.php");
+});
+
+Flight::route('/talu/minu_kontakt', function () {
+    Flight::render("head.php");
+    Flight::render("navbar.php");
+    Flight::render("sellercontact.php");
+    Flight::render("footer.php");
+});
+
+Flight::route('/talu/minu_tellimused', function () {
+    Flight::render("head.php");
+    Flight::render("navbar.php");
+    Flight::render("sellerorders.php");
     Flight::render("footer.php");
 });
 
