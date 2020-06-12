@@ -23,6 +23,20 @@ Flight::route('/add/new', function () {
     Flight::render("footer.php");
 });
 
+Flight::route('/konto', function () {
+    Flight::render("head.php");
+    Flight::render("navbar.php");
+    Flight::render("account.php");
+    Flight::render("footer.php");
+});
+
+Flight::route('/konto/minu_tooted', function () {
+    Flight::render("head.php");
+    Flight::render("navbar.php");
+    Flight::render("myproducts.php");
+    Flight::render("footer.php");
+});
+
 
 
 Flight::start()

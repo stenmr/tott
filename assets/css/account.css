@@ -1,0 +1,36 @@
+.account_container {
+    display: grid;
+    grid-template-columns: 20vw 80vw;
+}
+
+.menu {
+    margin: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: .5em 0 .5em .5em;
+    word-wrap: break-word;
+    border-radius: 4px;
+}
+
+.menu:hover {
+    cursor: pointer;
+    background-color: var(--light-gray);
+}
+
+.menu:active {
+    background-color: var(--light-gray);
+}
+
+.menu_box {
+    box-shadow: var(--shadow);
+}
+
+.amount-container > input[type=text] {
+    width: 40px;
+    padding: 3px 0 0 0;
+    text-align: center;
+}
+
+.amount-container > div {
+    height: min-content;
+}
