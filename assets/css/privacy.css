@@ -1,0 +1,17 @@
+body {
+    display: block;
+}
+
+body > *:not(nav) {
+    margin: 2rem 6rem;
+    padding: 0;
+}
+
+li {
+    font-size: 1.25em;
+    margin-left: 2rem;
+}
+
+nav {
+    margin-bottom: 4rem;
+}

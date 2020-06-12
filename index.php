@@ -23,7 +23,19 @@ Flight::route('/add/new', function () {
     Flight::render("footer.php");
 });
 
+Flight::route('/faq', function () {
+    Flight::render("head.php");
+    Flight::render("navbar.php");
+    Flight::render("faq.php");
+    Flight::render("footer.php");
+});
 
+Flight::route('/privacy', function () {
+    Flight::render("head.php");
+    Flight::render("navbar.php");
+    Flight::render("privacy.php");
+    Flight::render("footer.php");
+});
 
 Flight::start()
 ?>
