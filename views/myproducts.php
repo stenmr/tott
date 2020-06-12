@@ -5,9 +5,9 @@
 <body>
     <div class="account_container">
         <aside class="menu_box">
-            <div class="menu">Kontaktandmed</div>
-            <div class="menu">Minu tooted</div>
-            <div class="menu">Tellimused</div>
+            <a href="/konto/minu_kontakt"><div class="menu">Kontaktandmed</div></a>
+            <a href="/konto/minu_tooted"><div class="menu">Minu tooted</div></a>
+            <a href="/konto/minu_tellimused"><div class="menu">Tellimused</div></a>
         </aside>
         
 
@@ -25,7 +25,8 @@
                     <div class="plus">
                         <?php $icons->get('plus');?>
                     </div>
-                </div>   
+                </div>  
+                <button type="submit">Salvesta</button> 
             </div>
             <div class="product-card">
                 <img src="https://via.placeholder.com/150.png" alt="pilt">
@@ -40,7 +41,8 @@
                     <div class="plus">
                         <?php $icons->get('plus');?>
                     </div>
-                </div>   
+                </div>  
+                <button type="submit">Salvesta</button> 
             </div>
             <div class="product-card">
                 <img src="https://via.placeholder.com/150.png" alt="pilt">
@@ -55,7 +57,8 @@
                     <div class="plus">
                         <?php $icons->get('plus');?>
                     </div>
-                </div>   
+                </div>
+                <button type="submit">Salvesta</button>   
             </div>
         </div>
     </div>
