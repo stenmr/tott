@@ -4,5 +4,5 @@
 
     <input class="search" type="text" maxlength="30">
 
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <div class="custom-g-signin2"></div>
 </nav>
