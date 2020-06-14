@@ -2,9 +2,13 @@
 require 'vendor/autoload.php';
 
 // Andmebaasi andmed
-$dbc = parse_ini_file('../../db.ini');
+$dbc = parse_ini_file('../db.ini');
 
-Flight::register('db', 'PDO', array($dbc['driver']+':host='+$dbc['host']+';port='+$dbc['port']+';dbname='+$dbc['name'], $dbc['username'], $dbc['password']), function ($db) {
+$dsn = $dbc['driver'] . ':host=' . $dbc['host'] . ';port=' . $dbc['port'] . ';dbname=' . $dbc['name'];
+$username = $dbc['username'];
+$password = $dbc['password'];
+
+Flight::register('db', 'PDO', array($dsn, $username, $password), function ($db) {
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 });
@@ -86,15 +90,18 @@ Flight::map('notFound', function () {
 // https://developers.google.com/identity/sign-in/web/backend-auth
 Flight::route('POST /api/v1/tokensignin', function () {
 
-    // Google'i client ID, see ei ole konfidentsiaalne
-    // Sama ID on olemas ka <meta name="google-signin-client_id"> elemendis head.php's
-    $CLIENT_ID = '692603051438-unrghma1s7ihcge3rku3h7l45pmlsqjm.apps.googleusercontent.com';
+    // OAuth andmed
+    $oauth_credentials = '../oauth-credentials.json';
 
     $request = Flight::request();
 
-    $id_token = $request->query['idtoken'];
+    $id_token = $request->data->idtoken;
 
-    $client = new Google_Client(['client_id' => $CLIENT_ID]); // Specify the CLIENT_ID of the app that accesses the backend
+    $client = new Google_Client();
+    $client->setAuthConfig($oauth_credentials);
+    $client->setAccessToken($id_token);
+    $client->addScope('email');
+
     $payload = $client->verifyIdToken($id_token);
     if ($payload) {
         $userid = $payload['sub'];
@@ -108,14 +115,16 @@ Flight::route('POST /api/v1/tokensignin', function () {
         $picture = $payload['picture']; // .jpg ilmselt
          */
 
+        $isSeller = 0;
+
         $pdo = Flight::db();
 
-        $sql = 'INSERT INTO users (email, myyja, eesnimi, perenimi, google_id) VALUES (:email, :myyja, :eesnimi, :perenimi, :google_id)';
+        $sql = 'INSERT INTO ISIK (email, myyja, eesnimi, perenimi, google_id) VALUES (:email, :myyja, :eesnimi, :perenimi, :google_id)';
 
         $stmt = $pdo->prepare($sql);
 
         $stmt->bindParam(":email", $email);
-        $stmt->bindParam(":myyja", false);
+        $stmt->bindParam(":myyja", $isSeller);
         $stmt->bindParam(":eesnimi", $first_name);
         $stmt->bindParam(":perenimi", $last_name);
         $stmt->bindParam(":google_id", $userid);
