@@ -119,17 +119,28 @@ Flight::route('POST /api/v1/tokensignin', function () {
 
         $pdo = Flight::db();
 
-        $sql = 'INSERT INTO ISIK (email, myyja, eesnimi, perenimi, google_id) VALUES (:email, :myyja, :eesnimi, :perenimi, :google_id)';
+        $exists = 'SELECT * FROM ISIK WHERE google_id = :google_id LIMIT 1';
 
-        $stmt = $pdo->prepare($sql);
+        $exists_stmt = $pdo->prepare($exists);
+        $exists_stmt->bindParam(":google_id", $userid);
+        $exists_stmt->execute();
 
-        $stmt->bindParam(":email", $email);
-        $stmt->bindParam(":myyja", $isSeller);
-        $stmt->bindParam(":eesnimi", $first_name);
-        $stmt->bindParam(":perenimi", $last_name);
-        $stmt->bindParam(":google_id", $userid);
+        $result = $exists_stmt->fetch();
 
-        $stmt->execute();
+        // Kui kasutajat ei eksisteeri siis loome uue
+        if (!$result) {
+            $sql = 'INSERT INTO ISIK (email, myyja, eesnimi, perenimi, google_id) VALUES (:email, :myyja, :eesnimi, :perenimi, :google_id)';
+
+            $stmt = $pdo->prepare($sql);
+
+            $stmt->bindParam(":email", $email);
+            $stmt->bindParam(":myyja", $isSeller);
+            $stmt->bindParam(":eesnimi", $first_name);
+            $stmt->bindParam(":perenimi", $last_name);
+            $stmt->bindParam(":google_id", $userid);
+
+            $stmt->execute();
+        }
     } else {
         // Invalid ID token
         echo "Invalid ID token!";
