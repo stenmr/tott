@@ -6,12 +6,12 @@
     <form>
         <h2>Lisa enda toode</h2>
         <div class="upload-container">
-            <input type="file" name="fileToUpload" id="fileToUpload" accept=".png,.jpg,.jpeg">
+            <input type="file" name="fileToUpload" id="fileToUpload" accept=".png,.jpg,.jpeg" required>
             <?php $icons->get('upload');?>
             <label for="fileToUpload">Lae üles pilt</label>
         </div>
-        <input type="text" id="product_name" name="product_name" placeholder="Toote nimi">
-        <select name="product">
+        <input type="text" id="product_name" name="product_name" placeholder="Toote nimi" required>
+        <select name="product" required>
             <option selected disabled>Vali kategooria</option>
             <option value="Piimatooted ja munad">Piimatooted ja munad</option>
             <option value="Puuviljad<">Puuviljad</option>
@@ -24,7 +24,7 @@
             <option value="Liha ja kala">Liha ja kala</option>
         </select>
         <div>
-            <input type="number" step="0.01" name="price" max="999" placeholder="Hind">
+            <input type="number" step="0.01" name="price" min="0.01" max="999" placeholder="Hind" required>
             <label>€</label>
         </div>
         <label>Toote koguse tähistus</label>
@@ -34,7 +34,7 @@
             <input type="radio" id="kg" name="contact" value="kg">
             <label for="kg">Kilogramm (kg)</label>
         </div>
-        <input type="number" name="amount" placeholder="Kogus" max="9999" step="1">
+        <input type="number" name="amount" placeholder="Kogus" min="1" max="9999" step="1">
         <button type="submit">Kinnita</button>
     </form>
 </body>
