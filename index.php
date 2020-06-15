@@ -53,7 +53,7 @@ Flight::route('/talu/lisa/uus', function () {
     Flight::render("footer.php");
 });
 
-Flight::route('/faq', function () {
+Flight::route('/kkk', function () {
     Flight::render("head.php");
     Flight::render("navbar.php");
     Flight::render("faq.php");
@@ -87,7 +87,7 @@ Flight::route('/talu/minu_tellimused', function () {
     Flight::render("footer.php");
 });
 
-Flight::route('/privacy', function () {
+Flight::route('/privaatsus', function () {
     Flight::render("head.php");
     Flight::render("navbar.php");
     Flight::render("privacy.php");

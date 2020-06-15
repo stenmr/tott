@@ -10,7 +10,7 @@
     <h3>Talutoit otse tootjalt Tallinna Ülikooli</h3>
     </div>
     <div class="kkk">
-    <a href="/faq">KKK</a>
+    <a href="/kkk">KKK</a>
 
     </div>
 </footer>
