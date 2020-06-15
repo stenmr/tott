@@ -14,10 +14,25 @@ Flight::register('db', 'PDO', array($dsn, $username, $password), function ($db) 
 });
 
 Flight::route('/', function () {
+
+    $pdo = Flight::db();
+
+    $sql = 'SELECT * FROM TOODE LIMIT 15';
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+
+    $cards = [];
+    $result = $stmt->fetch();
+
+    foreach ($result as $value) {
+        array_push($cards, $result);
+    }
+
     // Head tuleb alati laadida esimesena, ülejäänud soovitud renderdamise järjekorras
     Flight::render("head.php");
     Flight::render("navbar.php");
-    Flight::render("home.php");
+    Flight::render("home.php", array('cards' => $cards));
     Flight::render("footer.php");
 });
 
