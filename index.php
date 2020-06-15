@@ -13,11 +13,29 @@ Flight::register('db', 'PDO', array($dsn, $username, $password), function ($db) 
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 });
 
+function clog($data)
+{
+    echo '<script>';
+    echo 'console.log(' . json_encode($data) . ')';
+    echo '</script>';
+}
+
 Flight::route('/', function () {
+
+    $pdo = Flight::db();
+
+    $sql = 'SELECT * FROM TOODE LIMIT 15';
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+
+    $cards = [];
+    $result = $stmt->fetchAll();
+
     // Head tuleb alati laadida esimesena, ülejäänud soovitud renderdamise järjekorras
     Flight::render("head.php");
     Flight::render("navbar.php");
-    Flight::render("home.php");
+    Flight::render("home.php", array('cards' => $result));
     Flight::render("footer.php");
 });
 
@@ -35,7 +53,7 @@ Flight::route('/talu/lisa/uus', function () {
     Flight::render("footer.php");
 });
 
-Flight::route('/faq', function () {
+Flight::route('/kkk', function () {
     Flight::render("head.php");
     Flight::render("navbar.php");
     Flight::render("faq.php");
@@ -69,7 +87,7 @@ Flight::route('/talu/minu_tellimused', function () {
     Flight::render("footer.php");
 });
 
-Flight::route('/privacy', function () {
+Flight::route('/privaatsus', function () {
     Flight::render("head.php");
     Flight::render("navbar.php");
     Flight::render("privacy.php");
