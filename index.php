@@ -15,6 +15,9 @@ Flight::register('db', 'PDO', array($dsn, $username, $password), function ($db) 
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 });
 
+// Administraatorid
+$admins = parse_ini_file('../admins.ini');
+
 function clog($data)
 {
     echo '<script>';
@@ -79,6 +82,7 @@ Flight::route('POST /talu/lisa/uus', function () {
         $img = Image::make($image)->resize(300, 200);
         $img->save($url, 90);
 
+        $amount_bool = $amount_type == 'kg' ? 1 : 0;
 
         $sql = 'INSERT INTO TOODE (kategooria, nimi, hind, yhik_kg_mitte_tk, pilt) VALUES (:product_type, :product_name, :price, :amount_type, :image_url)';
 
@@ -87,7 +91,7 @@ Flight::route('POST /talu/lisa/uus', function () {
         $stmt->bindParam(":product_type", $product_type);
         $stmt->bindParam(":product_name", $product_name);
         $stmt->bindParam(":price", $price);
-        $stmt->bindParam(":amount_type", $amount_type);
+        $stmt->bindParam(":amount_type", $amount_bool);
         $stmt->bindParam(":image_url", $url);
 
         $stmt->execute();
@@ -99,8 +103,12 @@ Flight::route('POST /talu/lisa/uus', function () {
         $stmt2 = $pdo->prepare($sql);
 
         $stmt2->bindParam(":amount", $amount);
+
+        // TODO: Hankida farm_id kusagilt!
         $stmt2->bindParam(":farm_id", $farm_id);
         $stmt2->bindParam(":product_id", $product_id);
+
+        $stmt2->execute();
     } else {
         echo "Midagi läks valesti.";
     }
@@ -152,6 +160,40 @@ Flight::route('/tellimused', function () {
     Flight::render("navbar.php");
     Flight::render("orders.php");
     Flight::render("footer.php");
+});
+
+Flight::route('/administraator', function () {
+    // Kui sessiooni email on üks admini emalidest
+    if (in_array($_SESSION['email'], admins)) {
+        Flight::render("head.php");
+        Flight::render("navbar.php");
+        Flight::render("admin.php");
+        Flight::render("footer.php");
+    } else {
+        Flight::redirect("/");
+    }
+});
+
+Flight::route('/administraator/talud', function () {
+    if (in_array($_SESSION['email'], admins)) {
+        Flight::render("head.php");
+        Flight::render("navbar.php");
+        Flight::render("farms.php");
+        Flight::render("footer.php");
+    } else {
+        Flight::redirect("/");
+    }
+});
+
+Flight::route('/administraator/kapid', function () {
+    if (in_array($_SESSION['email'], admins)) {
+        Flight::render("head.php");
+        Flight::render("navbar.php");
+        Flight::render("lockers.php");
+        Flight::render("footer.php");
+    } else {
+        Flight::redirect("/");
+    }
 });
 
 // Display custom 404 page
@@ -220,6 +262,9 @@ Flight::route('POST /api/v1/tokensignin', function () {
 
             $stmt->execute();
         }
+
+        session_start();
+        $_SESSION['email'] = $email;
     } else {
         // Invalid ID token
         echo "Invalid ID token!";
