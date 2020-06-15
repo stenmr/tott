@@ -2,6 +2,7 @@
     "require": {
         "mikecao/flight": "^1.3",
         "google/apiclient": "^2.5",
-        "pixelrobin/php-feather": "^1.0"
+        "pixelrobin/php-feather": "^1.0",
+        "intervention/image": "^2.5"
     }
 }

@@ -1,6 +1,8 @@
 <?php
 require 'vendor/autoload.php';
 
+use Intervention\Image\ImageManagerStatic as Image;
+
 // Andmebaasi andmed
 $dbc = parse_ini_file('../db.ini');
 
@@ -46,11 +48,62 @@ Flight::route('/talu/lisa', function () {
     Flight::render("footer.php");
 });
 
-Flight::route('/talu/lisa/uus', function () {
+Flight::route('GET /talu/lisa/uus', function () {
     Flight::render("head.php");
     Flight::render("navbar.php");
     Flight::render("addnew.php");
     Flight::render("footer.php");
+});
+
+Flight::route('POST /talu/lisa/uus', function () {
+
+    $request = Flight::request();
+
+    $image = $request->data->image_upload;
+    $product_name = $request->data->product_name;
+    $product_type = $request->data->product_type;
+    $price = $request->data->price;
+    $amount = $request->data->amount;
+    $amount_type = $request->data->amount_type;
+
+    if ($image && $product_name && $product_type && $price && $amount && $amount_type) {
+
+        $pdo = Flight::db();
+
+        $query = 'SELECT COUNT(TOODE_toote_id) from TOODE';
+        $stmt = $pdo->prepare($query);
+        $stmt->execute();
+        $count = $stmt->fetch();
+
+        $url = 'images/product/' . $count + 1;
+        $img = Image::make($image)->resize(300, 200);
+        $img->save($url, 90);
+
+
+        $sql = 'INSERT INTO TOODE (kategooria, nimi, hind, yhik_kg_mitte_tk, pilt) VALUES (:product_type, :product_name, :price, :amount_type, :image_url)';
+
+        $stmt = $pdo->prepare($sql);
+
+        $stmt->bindParam(":product_type", $product_type);
+        $stmt->bindParam(":product_name", $product_name);
+        $stmt->bindParam(":price", $price);
+        $stmt->bindParam(":amount_type", $amount_type);
+        $stmt->bindParam(":image_url", $url);
+
+        $stmt->execute();
+
+        $product_id = $pdo->lastInsertId();
+
+        $sql2 = 'INSERT INTO TALU_TOODE (kogus, TALU_talu_id, TOODE_toote_id) VALUES (:amount, :farm_id, :product_id)';
+
+        $stmt2 = $pdo->prepare($sql);
+
+        $stmt2->bindParam(":amount", $amount);
+        $stmt2->bindParam(":farm_id", $farm_id);
+        $stmt2->bindParam(":product_id", $product_id);
+    } else {
+        echo "Midagi läks valesti.";
+    }
 });
 
 Flight::route('/kkk', function () {
