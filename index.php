@@ -34,7 +34,6 @@ Flight::route('/', function () {
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
 
-    $cards = [];
     $result = $stmt->fetchAll();
 
     // Head tuleb alati laadida esimesena, ülejäänud soovitud renderdamise järjekorras
@@ -174,25 +173,75 @@ Flight::route('/administraator', function () {
     }
 });
 
-Flight::route('/administraator/talud', function () {
+Flight::route('GET /administraator/talud', function () {
     if (in_array($_SESSION['email'], admins)) {
+
+        $pdo = Flight::db();
+
+        $sql = 'SELECT * FROM ISIK WHERE myyja = 1';
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll();
+
         Flight::render("head.php");
         Flight::render("navbar.php");
-        Flight::render("farms.php");
+        Flight::render("admin_farms.php", array('farms' => $result));
         Flight::render("footer.php");
     } else {
         Flight::redirect("/");
     }
 });
 
-Flight::route('/administraator/kapid', function () {
+Flight::route('POST /administraator/talud', function () {
     if (in_array($_SESSION['email'], admins)) {
+
+        $request = Flight::request();
+
+        $email = $request->data->email;
+
+        // TODO: Kontrolli et email eksisteerib andmebaasis
+        if ($email) {
+            $pdo = Flight::db();
+
+            $sql = 'UPDATE ISIK SET myyja = 1 WHERE email = :email';
+
+            $stmt = $pdo->prepare($sql);
+
+            $stmt->bindParam(":email", $email);
+
+            $stmt->execute();
+
+            Flight::redirect('/administraator/talud');
+        }
+    }
+});
+
+Flight::route('GET /administraator/kapid', function () {
+    if (in_array($_SESSION['email'], admins)) {
+
+        $pdo = Flight::db();
+
+        $sql = 'SELECT * FROM ISIK WHERE kapp IS NOT NULL';
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll();
+
         Flight::render("head.php");
         Flight::render("navbar.php");
-        Flight::render("lockers.php");
+        Flight::render("admin_lockers.php", array('lockers' => $result));
         Flight::render("footer.php");
     } else {
         Flight::redirect("/");
+    }
+});
+
+Flight::route('POST /administraator/kapid', function () {
+    if (in_array($_SESSION['email'], admins)) {
+
     }
 });
 
