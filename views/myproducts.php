@@ -14,7 +14,7 @@
 
         <div class="products">
             <div class="product-card">
-                <img src="https://via.placeholder.com/150.png" alt="pilt">
+                <img src="https://via.placeholder.com/600x400.jpg" alt="pilt">
                 <h3>Kartulid</h3>
                 <div class="price">Siia tuleb hind</div>
                 <p>Muuda kogust:</p>
@@ -30,7 +30,7 @@
                 <button type="submit">Salvesta</button> 
             </div>
             <div class="product-card">
-                <img src="https://via.placeholder.com/150.png" alt="pilt">
+                <img src="https://via.placeholder.com/600x400.jpg" alt="pilt">
                 <h3>Kartulid</h3>
                 <div class="price">Siia tuleb hind</div>
                 <p>Muuda kogust:</p>
@@ -46,7 +46,7 @@
                 <button type="submit">Salvesta</button> 
             </div>
             <div class="product-card">
-                <img src="https://via.placeholder.com/150.png" alt="pilt">
+                <img src="https://via.placeholder.com/600x400.jpg" alt="pilt">
                 <h3>Kartulid</h3>
                 <div class="price">Siia tuleb hind</div>
                 <p>Muuda kogust:</p>
