@@ -2,10 +2,6 @@ div {
     position: relative;
   }
 
-  body{
-    background: var(--main-color);
-  }
-
   input[type="checkbox"] {
     position: absolute;
     top: 0;
