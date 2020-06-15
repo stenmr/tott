@@ -21,14 +21,14 @@ Flight::route('/', function () {
     Flight::render("footer.php");
 });
 
-Flight::route('/add', function () {
+Flight::route('/talu/lisa', function () {
     Flight::render("head.php");
     Flight::render("navbar.php");
     Flight::render("add.php");
     Flight::render("footer.php");
 });
 
-Flight::route('/add/new', function () {
+Flight::route('/talu/lisa/uus', function () {
     Flight::render("head.php");
     Flight::render("navbar.php");
     Flight::render("addnew.php");
