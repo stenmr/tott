@@ -13,14 +13,14 @@
         <form>
         <h2>Muuda kontaktandmeid</h2>
         <label>Talu nimi</label>
-        <input type="text" id="farm_name" name="farm_name" placeholder="Talu nimi">
+        <input type="text" name="farm_name" placeholder="Talu nimi" required>
         <label>Aadress</label>
-        <input type="text" id="farm_address" name="farm_address" placeholder="Aadress">
+        <input type="text" name="farm_address" placeholder="Aadress" required>
         <label>E-mail</label>
-        <input type="text" id="email" name="email" placeholder="email@talu.ee">
+        <input type="text" name="email" placeholder="email@talu.ee" required>
         <label>Panga informatsioon</label>
-        <input type="text" id="iban" name="iban" placeholder="Kontonumber">
-        <input type="text" id="iban_owner" name="iban_owner" placeholder="Konto omanik">
+        <input type="text" name="iban" placeholder="Kontonumber" required>
+        <input type="text" name="iban_owner" placeholder="Konto omanik" required>
         <button type="submit" id="save_contact">Salvesta muudatused</button>
     </form>
     </div>

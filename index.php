@@ -147,6 +147,13 @@ Flight::route('/privaatsus', function () {
     Flight::render("footer.php");
 });
 
+Flight::route('/tellimused', function () {
+    Flight::render("head.php");
+    Flight::render("navbar.php");
+    Flight::render("orders.php");
+    Flight::render("footer.php");
+});
+
 // Display custom 404 page
 // TODO: Lisada siia midagi
 Flight::map('notFound', function () {
