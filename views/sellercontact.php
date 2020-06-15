@@ -10,7 +10,7 @@
             <a href="/talu/lisa"><div class="menu">Lisa tooteid</div></a>
         </aside>
 
-        <form>
+        <form method="post">
         <h2>Muuda kontaktandmeid</h2>
         <label>Talu nimi</label>
         <input type="text" name="farm_name" placeholder="Talu nimi" required>
