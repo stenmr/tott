@@ -16,7 +16,8 @@
                 <p> Toode, hind...</p>
                 <h3>Summa</h3>
                 <h4>Kapp</h4>
-                <button type="submit">Tooted kohale toimetatud</button> 
+                <input type="checkbox" id="delivered" name="delivered" value="kohaletoimetatud">
+                <label for="delivered"> Tooted kohaletoimetatud </label><br>
                 <button type="submit" id="cancel">Tühista tellimus</button> 
             </div>
         </div>

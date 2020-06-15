@@ -81,6 +81,7 @@ Flight::route('/privacy', function () {
 Flight::map('notFound', function () {
     Flight::render("head.php");
     Flight::render("navbar.php");
+    Flight::render("notfound.php");
     Flight::render("footer.php");
 });
 
