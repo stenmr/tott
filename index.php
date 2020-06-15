@@ -13,6 +13,13 @@ Flight::register('db', 'PDO', array($dsn, $username, $password), function ($db) 
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
 });
 
+function clog($data)
+{
+    echo '<script>';
+    echo 'console.log(' . json_encode($data) . ')';
+    echo '</script>';
+}
+
 Flight::route('/', function () {
 
     $pdo = Flight::db();
@@ -23,16 +30,12 @@ Flight::route('/', function () {
     $stmt->execute();
 
     $cards = [];
-    $result = $stmt->fetch();
-
-    foreach ($result as $value) {
-        array_push($cards, $result);
-    }
+    $result = $stmt->fetchAll();
 
     // Head tuleb alati laadida esimesena, ülejäänud soovitud renderdamise järjekorras
     Flight::render("head.php");
     Flight::render("navbar.php");
-    Flight::render("home.php", array('cards' => $cards));
+    Flight::render("home.php", array('cards' => $result));
     Flight::render("footer.php");
 });
 

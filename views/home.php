@@ -19,8 +19,8 @@
         <div class="products">
         <?php
         foreach ($cards as $card) {
-            $name = $card->name;
-            $price = $card->price;
+            $name = $card->nimi;
+            $price = $card->hind;
             include 'card.php'; 
         }
         ?>

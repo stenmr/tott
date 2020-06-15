@@ -1,7 +1,7 @@
 <div class="product-card">
     <img src="https://via.placeholder.com/600x400.jpg" alt="pilt">
-    <h3><?php $name ?></h3>
-    <div class="price"><?php $price ?></div>
+    <h3><?php echo $name ?></h3>
+    <div class="price"><?php echo $price ?></div>
     <div class="amount-container">
         <div class="minus">
             <?php $icons->get('minus');?>
