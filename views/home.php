@@ -22,6 +22,7 @@
             $name = $card->nimi;
             $price = $card->hind;
             $id = $card->toote_id;
+            $type = $card->yhik_kg_mitte_tk;
             include 'card.php';
         }
         ?>

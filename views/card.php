@@ -1,9 +1,17 @@
-
+<?php
+    $typeText;
+    if($type == 1){
+        $typeText =  " €/kg";
+    }
+    if($type == 0){
+        $typeText = " €/tk";
+    }  
+?>
 
 <div class="product-card">
     <img src="https://via.placeholder.com/600x400.jpg" alt="pilt">
     <h3><?php echo $name ?></h3>
-    <div class="price"><?php echo $price ?></div>
+    <div class="price"><?php echo $price . $typeText ?></div>
     <div class="amount-container">
         <button class="minus">
             <?php $icons->get('minus');?>
