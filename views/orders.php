@@ -3,11 +3,6 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/account.css">
 </head>
 <body>
-    <div class="account_container">
-        <aside class="menu_box">
-            <a href="/tellimused"><div class="menu">Minu tellimused</div></a>
-        </aside>
-
         <div class="products">
             <div class="product-card order">
                 <h3>10.06.2020</h3>

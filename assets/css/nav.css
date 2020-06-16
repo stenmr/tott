@@ -7,3 +7,25 @@
     font-size: 1rem;
     color: black;
 }
+
+.basket {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+    padding: 4px;
+}
+
+.basket:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.6);
+    
+}
+
+.basket:active{
+    color: black;
+    text-decoration: none;
+}
+
+.basket:visited{
+    color: black;
+    text-decoration: none;
+}
