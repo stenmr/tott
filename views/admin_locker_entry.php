@@ -1,5 +1,5 @@
 <div class="entry-container">
-    <p><?php $email ?></p>
-    <p><?php $locker ?></p>
+    <p><?php echo $email ?></p>
+    <p><?php echo $locker ?></p>
     <button class="delete"></button>
 </div>
