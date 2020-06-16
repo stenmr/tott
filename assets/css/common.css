@@ -75,7 +75,7 @@ nav > * {
     box-shadow: var(--shadow);
     border-radius: .5em;
     height: max-content;
-    width: max-content;
+    width: 13em;
     overflow: hidden;
     margin: 0 .75em .75em .75em;
     text-align: center;
@@ -83,6 +83,10 @@ nav > * {
 
 .product-card > img {
     width: 13em;
+}
+
+.product-card > h3 {
+    height: 2.5em;
 }
 
 .amount-container {
