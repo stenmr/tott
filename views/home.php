@@ -21,7 +21,8 @@
         foreach ($cards as $card) {
             $name = $card->nimi;
             $price = $card->hind;
-            include 'card.php'; 
+            $id = $card->toote_id;
+            include 'card.php';
         }
         ?>
         </div>

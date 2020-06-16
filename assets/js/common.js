@@ -4,9 +4,6 @@ function onSuccess(googleUser) {
     const xhr = new XMLHttpRequest();
     xhr.open('POST', '/api/v1/tokensignin');
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.onload = function () {
-        console.log(`Signed in as: ${xhr.responseText}`);
-    };
     xhr.send(`idtoken=${idToken}`);
 }
 

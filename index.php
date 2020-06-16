@@ -17,6 +17,7 @@ Flight::register('db', 'PDO', array($dsn, $username, $password), function ($db) 
 
 // Administraatorid
 $admins = parse_ini_file('../admins.ini');
+Flight::set('admins', $admins['admins']);
 
 function clog($data)
 {
@@ -123,6 +124,12 @@ Flight::route('POST /talu/lisa/uus', function () {
     }
 });
 
+Flight::route('/ostukorv', function () {
+    Flight::render("head.php");
+    Flight::render("navbar.php");
+    Flight::render("cart.php");
+    Flight::render("footer.php");
+});
 Flight::route('/kkk', function () {
     Flight::render("head.php");
     Flight::render("navbar.php");
@@ -173,7 +180,8 @@ Flight::route('/tellimused', function () {
 
 Flight::route('/administraator', function () {
     // Kui sessiooni email on üks admini emalidest
-    if (in_array($_SESSION['email'], admins)) {
+    session_start();
+    if (isset($_SESSION['email']) && in_array($_SESSION['email'], Flight::get('admins'))) {
         Flight::render("head.php");
         Flight::render("navbar.php");
         Flight::render("admin.php");
@@ -184,7 +192,8 @@ Flight::route('/administraator', function () {
 });
 
 Flight::route('GET /administraator/talud', function () {
-    if (in_array($_SESSION['email'], admins)) {
+    session_start();
+    if (isset($_SESSION['email']) && in_array($_SESSION['email'], Flight::get('admins'))) {
 
         $pdo = Flight::db();
 
@@ -205,7 +214,8 @@ Flight::route('GET /administraator/talud', function () {
 });
 
 Flight::route('POST /administraator/talud', function () {
-    if (in_array($_SESSION['email'], admins)) {
+    session_start();
+    if (isset($_SESSION['email']) && in_array($_SESSION['email'], Flight::get('admins'))) {
 
         $request = Flight::request();
 
@@ -229,7 +239,8 @@ Flight::route('POST /administraator/talud', function () {
 });
 
 Flight::route('GET /administraator/kapid', function () {
-    if (in_array($_SESSION['email'], admins)) {
+    session_start();
+    if (isset($_SESSION['email']) && in_array($_SESSION['email'], Flight::get('admins'))) {
 
         $pdo = Flight::db();
 
@@ -250,7 +261,8 @@ Flight::route('GET /administraator/kapid', function () {
 });
 
 Flight::route('POST /administraator/kapid', function () {
-    if (in_array($_SESSION['email'], admins)) {
+    session_start();
+    if (isset($_SESSION['email']) && in_array($_SESSION['email'], Flight::get('admins'))) {
 
     }
 });
@@ -322,7 +334,6 @@ Flight::route('POST /api/v1/tokensignin', function () {
             $stmt->execute();
         }
 
-        session_start();
         $_SESSION['email'] = $email;
     } else {
         // Invalid ID token
