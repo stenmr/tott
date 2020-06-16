@@ -1,4 +1,4 @@
-# TLU OTT
+# TLÜ OTT
 
 Tegemist on Tallinna Ülikool Informaatika õppekava raames valminud projektiga. Leht sai loodud Tarkvaraarenduse projekti aine raames. Projekti tegid Sten Raudmets, Brita Liivamaa ja Elina Sirk
 
