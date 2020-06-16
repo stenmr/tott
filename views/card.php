@@ -1,7 +1,4 @@
-<head>
-   <script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
-   <script src="../assets/js/amount.js" async defer></script>
-</head>
+
 
 <div class="product-card">
     <img src="https://via.placeholder.com/600x400.jpg" alt="pilt">
