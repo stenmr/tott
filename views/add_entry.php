@@ -3,13 +3,16 @@
     <p><?php $price ?></p>
     <p><?php $unit ?></p>
 
-    <?php 
+    <?php
+    $unitText;
     if($unit == 1){
-        echo $name . " " .$price . " " . "€/kg";
+        $unitText = $name . " " .$price . " " . "€/kg";
     }
     if($unit == 0){
-        echo $name . " " .$price . " " . "€/tk";
+        $unitText = $name . " " .$price . " " . "€/tk";
     }  
     ?>
+
+    <option value="<?php echo ($name . ' ' . $price . ' ' . $unit)?>"><?php echo ($name . ' ' . $price . ' ' . $unitText)?></option>
 
 </div>
