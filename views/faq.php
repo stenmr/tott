@@ -28,6 +28,6 @@
         <input type="checkbox" id="faq-4">
         <h2><label for="faq-4">Kuidas saan ennast müüjaks registreerida?</label></h2>
         <p>Müüjaks registreerimiseks loo alustuseks endale konto Google'i kontoga sisselogides. 
-            Seejärel saada meile meilile müüjaks hakkamise soov</p>
+            Seejärel saada meile meilile (triinu.jesmin@tlu.ee) müüjaks hakkamise soov.</p>
     </div>
 </body>
