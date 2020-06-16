@@ -191,6 +191,12 @@ button:hover {
     background-color: var(--main-color-hover);
 }
 
+.minus, .plus {
+    display: flex;
+    padding: 0.33em;
+    border-radius: 9999px;
+}
+
 .upload-container:hover {
     cursor: pointer;
     background-color: var(--light-gray);
