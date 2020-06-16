@@ -6,7 +6,7 @@
     <a href="/"><img src="../assets/logo.png" alt="Logo" class="logo navlink"><a href="/">
     <a href="/" class="navlink"><h1>TLÜ OTT</h1></a>
     <div class="basket"> 
-    <a href="/ostukorv">
+    <a href="/ostukorv"></a>
     <?php $icons->get('shopping-cart');?>
     Ostukorv
     </div>
