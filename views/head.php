@@ -23,6 +23,10 @@
         <script src="../assets/js/common.js" async defer></script>
         <script src="https://code.jquery.com/jquery-2.2.4.js" charset="utf-8"></script>
         <script src="../assets/js/shoppinCart.js" async defer></script>
+        <script src="../assets/js/categories.js" async defer></script>
+
+
+
         <meta name="google-signin-client_id"
             content="692603051438-unrghma1s7ihcge3rku3h7l45pmlsqjm.apps.googleusercontent.com">
     </head>
