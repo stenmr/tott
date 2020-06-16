@@ -114,6 +114,12 @@ Flight::route('POST /talu/lisa/uus', function () {
     }
 });
 
+Flight::route('/ostukorv', function () {
+    Flight::render("head.php");
+    Flight::render("navbar.php");
+    Flight::render("cart.php");
+    Flight::render("footer.php");
+});
 Flight::route('/kkk', function () {
     Flight::render("head.php");
     Flight::render("navbar.php");
