@@ -2,8 +2,8 @@
     <link rel="stylesheet" type="text/css" href="../assets/css/nav.css">
 </head>
 <nav>
-    <a href="/"><img src="../assets/logo.png" alt="Logo" class="logo"><a href="/">
-    <a href="/"><h1>TLÜ OTT</h1></a>
+    <a href="/"><img src="../assets/logo.png" alt="Logo" class="logo navlink"><a href="/">
+    <a href="/" class="navlink"><h1>TLÜ OTT</h1></a>
 
     <input class="search" type="text" maxlength="30">
 
