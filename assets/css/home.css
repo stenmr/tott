@@ -27,6 +27,11 @@ a {
     text-decoration: none;
 }
 
+a:hover {
+    display: block;
+    text-decoration: underline;
+}
+
 a:link {
     color: var(--font-color)L
 }

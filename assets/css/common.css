@@ -59,7 +59,8 @@ nav > * {
 }
 
 .products-and-categories-container {
-    display: grid;
+    display: flex;
+    flex: 1 0;
 }
 
 .products {
@@ -102,7 +103,7 @@ nav > * {
 }
 
 .category {
-    margin: 10px;
+    margin: 0.33rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     padding: .5em 0 .5em .5em;
@@ -113,11 +114,6 @@ nav > * {
 .add-to-cart,
 .price {
     margin: 10px;
-}
-
-.category:hover {
-    cursor: pointer;
-    background-color: var(--light-gray);
 }
 
 .category_box {
