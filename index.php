@@ -165,19 +165,19 @@ Flight::route('/tellimused', function () {
 Flight::route('/administraator', function () {
     // Kui sessiooni email on üks admini emalidest
     session_start();
-    if (in_array($_SESSION['email'], Flight::get('admins'))) {
+    if (isset($_SESSION['email']) && in_array($_SESSION['email'], Flight::get('admins'))) {
         Flight::render("head.php");
         Flight::render("navbar.php");
         Flight::render("admin.php");
         Flight::render("footer.php");
     } else {
-        # Flight::redirect("/");
+        Flight::redirect("/");
     }
 });
 
 Flight::route('GET /administraator/talud', function () {
     session_start();
-    if (in_array($_SESSION['email'], Flight::get('admins'))) {
+    if (isset($_SESSION['email']) && in_array($_SESSION['email'], Flight::get('admins'))) {
 
         $pdo = Flight::db();
 
@@ -199,7 +199,7 @@ Flight::route('GET /administraator/talud', function () {
 
 Flight::route('POST /administraator/talud', function () {
     session_start();
-    if (in_array($_SESSION['email'], Flight::get('admins'))) {
+    if (isset($_SESSION['email']) && in_array($_SESSION['email'], Flight::get('admins'))) {
 
         $request = Flight::request();
 
@@ -224,7 +224,7 @@ Flight::route('POST /administraator/talud', function () {
 
 Flight::route('GET /administraator/kapid', function () {
     session_start();
-    if (in_array($_SESSION['email'], Flight::get('admins'))) {
+    if (isset($_SESSION['email']) && in_array($_SESSION['email'], Flight::get('admins'))) {
 
         $pdo = Flight::db();
 
@@ -246,7 +246,7 @@ Flight::route('GET /administraator/kapid', function () {
 
 Flight::route('POST /administraator/kapid', function () {
     session_start();
-    if (in_array($_SESSION['email'], Flight::get('admins'))) {
+    if (isset($_SESSION['email']) && in_array($_SESSION['email'], Flight::get('admins'))) {
 
     }
 });
