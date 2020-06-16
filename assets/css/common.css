@@ -68,14 +68,14 @@ nav > * {
     margin: 10px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
 }
 
 .product-card {
     box-shadow: var(--shadow);
     border-radius: .5em;
     height: max-content;
-    width: max-content;
+    width: 13em;
     overflow: hidden;
     margin: 0 .75em .75em .75em;
     text-align: center;
@@ -83,6 +83,10 @@ nav > * {
 
 .product-card > img {
     width: 13em;
+}
+
+.product-card > h3 {
+    height: 2.5em;
 }
 
 .amount-container {
@@ -189,6 +193,12 @@ button {
 button:hover {
     cursor: pointer;
     background-color: var(--main-color-hover);
+}
+
+.minus, .plus {
+    display: flex;
+    padding: 0.33em;
+    border-radius: 9999px;
 }
 
 .upload-container:hover {
