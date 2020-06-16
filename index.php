@@ -331,5 +331,26 @@ Flight::route('POST /api/v1/tokensignin', function () {
     }
 });
 
+Flight::route('POST /api/v1/filter', function () {
+
+    $request = Flight::request();
+
+    $category = $request->data->category;
+
+    $pdo = Flight::db();
+
+    $sql = 'SELECT * FROM TOODE WHERE kategooria = :category';
+
+    $stmt = $pdo->prepare($sql);
+
+    $stmt->bindParam(":category", $category);
+
+    $stmt->execute();
+
+    $result = $stmt->fetchAll();
+
+    Flight::json(array('result' => $result));
+});
+
 Flight::start()
 ?>
