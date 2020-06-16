@@ -16,7 +16,7 @@
             <?php $icons->get('plus');?>
         </button>
     </div>
-    <div class="add-to-cart">
+    <div class="add-to-cart" data-id="<?php echo $id ?>">
         <?php $icons->get('shopping-cart');?>
     </div>
 </div>
