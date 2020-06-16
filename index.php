@@ -44,9 +44,19 @@ Flight::route('/', function () {
 });
 
 Flight::route('/talu/lisa', function () {
+
+    $pdo = Flight::db();
+
+    $sql = 'SELECT nimi, hind, yhik_kg_mitte_tk FROM TOODE';
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+
+    $result = $stmt->fetchAll();
+
     Flight::render("head.php");
     Flight::render("navbar.php");
-    Flight::render("add.php");
+    Flight::render("add.php", array('newproducts' => $result));
     Flight::render("footer.php");
 });
 
