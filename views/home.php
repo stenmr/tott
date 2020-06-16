@@ -5,15 +5,15 @@
 <body>
     <div class="products-and-categories-container">
         <aside class="category_box">
-            <div class="category">Piimatooted ja munad</div>
-            <div class="category">Puuviljad</div>
-            <div class="category">Küpsetised</div>
-            <div class="category">Juurviljad ja köögiviljad</div>
-            <div class="category">Hoidised</div>
-            <div class="category">Marjad</div>
-            <div class="category">Joogid</div>
-            <div class="category">Seemned ja teraviljad</div>
-            <div class="category">Liha ja kala</div>
+            <a class="category" href="/Piimatooted+ja+munad">Piimatooted ja munad</a>
+            <a class="category" href="/Puuviljad">Puuviljad</a>
+            <a class="category" href="/Küpsetised">Küpsetised</a>
+            <a class="category" href="/Juurviljad+ja+köögiviljad">Juurviljad ja köögiviljad</a>
+            <a class="category" href="/Hoidised">Hoidised</a>
+            <a class="category" href="/Marjad">Marjad</a>
+            <a class="category" href="/Joogid">Joogid</a>
+            <a class="category" href="/Seemned+ja+teraviljad">Seemned ja teraviljad</a>
+            <a class="category" href="/Liha+ja+kala">Liha ja kala</a>
         </aside>
 
         <div class="products">

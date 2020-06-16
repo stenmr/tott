@@ -26,24 +26,6 @@ function clog($data)
     echo '</script>';
 }
 
-Flight::route('/', function () {
-
-    $pdo = Flight::db();
-
-    $sql = 'SELECT * FROM TOODE LIMIT 15';
-
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
-
-    $result = $stmt->fetchAll();
-
-    // Head tuleb alati laadida esimesena, ülejäänud soovitud renderdamise järjekorras
-    Flight::render("head.php");
-    Flight::render("navbar.php");
-    Flight::render("home.php", array('cards' => $result));
-    Flight::render("footer.php");
-});
-
 Flight::route('/talu/lisa', function () {
 
     $pdo = Flight::db();
@@ -267,12 +249,39 @@ Flight::route('POST /administraator/kapid', function () {
     }
 });
 
-// Display custom 404 page
-// TODO: Lisada siia midagi
+// 404 errori leht
 Flight::map('notFound', function () {
     Flight::render("head.php");
     Flight::render("navbar.php");
     Flight::render("notfound.php");
+    Flight::render("footer.php");
+});
+
+Flight::route('/(@category)', function ($category) {
+
+    $pdo = Flight::db();
+
+    $sql;
+    $category_converted = str_replace('+', ' ', $category);
+
+    if (isset($category)) {
+        $sql = 'SELECT * FROM TOODE WHERE kategooria = :category';
+    } else {
+        $sql = 'SELECT * FROM TOODE LIMIT 15';
+    }
+
+    $stmt = $pdo->prepare($sql);
+
+    if (isset($category)) $stmt->bindParam(":category", $category_converted);
+
+    $stmt->execute();
+
+    $result = $stmt->fetchAll();
+
+    // Head tuleb alati laadida esimesena, ülejäänud soovitud renderdamise järjekorras
+    Flight::render("head.php");
+    Flight::render("navbar.php");
+    Flight::render("home.php", array('cards' => $result));
     Flight::render("footer.php");
 });
 
@@ -341,6 +350,7 @@ Flight::route('POST /api/v1/tokensignin', function () {
     }
 });
 
+// Kasutamata
 Flight::route('POST /api/v1/filter', function () {
 
     $request = Flight::request();

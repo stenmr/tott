@@ -1,3 +1,17 @@
+:root {
+    --shadow: 0 4px 8px hsla(0, 0%, 27%, .15);
+    --shadow-alt: 6px 6px 18px 0 rgba(0, 0, 0, .08);
+    --main-color: linear-gradient(-33deg, hsl(133, 48%, 62%), hsl(133, 55%, 62%));
+    --main-color-solid: hsl(133, 48%, 62%);
+    --main-color-hover: hsl(133, 48%, 68%);
+    --font-color: #224;
+    --tint-1: #fff;
+    --tint-2: hsl(133, 48%, 97%);
+    --dark-gray: rgb(138, 142, 138);
+    --gray: hsl(131, 10%, 78%);
+    --light-gray: hsl(131, 10%, 90%);
+}
+
 .amount-container > input[type=text] {
     width: 40px;
     padding: 3px 0 0 0;
@@ -6,4 +20,17 @@
 
 .amount-container > div {
     height: min-content;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+}
+
+a:link {
+    color: var(--font-color)L
+}
+
+a:visited {
+    color: var(--font-color)L
 }
