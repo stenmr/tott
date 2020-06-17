@@ -5,10 +5,9 @@
 <body>
     <form>
         <h2>Lisa enda toode</h2>
-        <div class="upload-container">
+        <div>
             <input type="file" name="fileToUpload" id="fileToUpload" accept=".png,.jpg,.jpeg" required>
-            <?php $icons->get('upload');?>
-            <label for="fileToUpload">Lae üles pilt</label>
+            <label for="fileToUpload" class="upload-container"><?php $icons->get('upload');?>Lae üles pilt</label>
         </div>
         <input type="text" id="product_name" name="product_name" placeholder="Toote nimi" required>
         <select name="product" required>

@@ -161,7 +161,6 @@ select {
     border: 2px solid var(--gray);
     border-radius: 0;
     padding: .5rem .25rem;
-    text-align: center;
 }
 
 label {
@@ -184,7 +183,7 @@ input[type="file"] {
 }
 
 .upload-container {
-    font-size: 1.125em;
+    font-size: 1.25em;
     padding: .25em;
     border: 2px solid var(--gray);
     display: flex;
@@ -194,11 +193,6 @@ input[type="file"] {
 
 .upload-container > svg {
     margin: 0 .66em 0 .33em;
-}
-
-.upload-container > label {
-    cursor: pointer;
-    color: var(--dark-gray);
 }
 
 button {
