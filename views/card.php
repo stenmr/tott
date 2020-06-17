@@ -22,7 +22,7 @@ if ($type == 0) {
         </button>
     </div>
     <select name="farm" class="farm-select" required>
-        <option value="" selected>Juhuslik talu</option>
+        <option value="-1" selected>Juhuslik talu</option>
         <?php
         $values = $farms;
 
