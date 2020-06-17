@@ -34,6 +34,10 @@
     letter-spacing: 1px;
 }
 
+.basket:visited, .my-account:visited {
+    color: var(--font-color);
+}
+
 .logout {
     background-color: var(--secondary-color);
 }
