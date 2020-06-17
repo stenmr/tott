@@ -8,7 +8,7 @@
         <div class="upload-container">
             <input type="file" name="fileToUpload" id="fileToUpload" accept=".png,.jpg,.jpeg" required>
             <?php $icons->get('upload');?>
-            <label>Lae üles pilt</label>
+            <label for="fileToUpload">Lae üles pilt</label>
         </div>
         <input type="text" id="product_name" name="product_name" placeholder="Toote nimi" required>
         <select name="product" required>
