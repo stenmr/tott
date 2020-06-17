@@ -379,12 +379,11 @@ Flight::route('POST /api/v1/tokensignin', function () {
     }
 });
 
-// Kasutamata
-Flight::route('POST /api/v1/filter', function () {
+Flight::route('POST /api/v1/cart', function () {
 
     $request = Flight::request();
 
-    $category = $request->data->category;
+    $cart = $request->data->cart;
 
     $pdo = Flight::db();
 

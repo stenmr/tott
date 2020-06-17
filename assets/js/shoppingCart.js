@@ -32,20 +32,31 @@ for (const element of document.getElementsByClassName('add-to-cart')) {
         const input = Array.from(amountContainer.childNodes)
             .find(x => x.tagName === 'INPUT');
         const id = this.getAttribute('data-id');
+        const productName = Array.from(this.parentElement.childNodes)
+            .find(x => x.tagName === 'H3');
+        const price = Array.from(this.parentElement.childNodes)
+            .find(x => x.className === 'price');
         const selection = Array.from(this.parentElement.childNodes)
             .find(x => x.className === 'farm-select');
-        const farmSelection = selection.value;
+        const farmSelection = selection.selectedIndex;
+        const farmName = selection.selectedOptions[0].innerText;
 
         if (shoppingCartMap.has(id)) {
             const existingValue = shoppingCartMap.get(id).amount;
             shoppingCartMap.set(id, {
+                name: productName.innerText,
                 amount: existingValue + Number(input.value),
-                selection: farmSelection
+                selection: farmSelection,
+                unitPrice: price.innerText,
+                farmName
             });
         } else {
             shoppingCartMap.set(id, {
+                name: productName.innerText,
                 amount: Number(input.value),
-                selection: farmSelection
+                selection: farmSelection,
+                unitPrice: price.innerText,
+                farmName
             });
         }
         console.log(shoppingCartMap);
