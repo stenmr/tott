@@ -1,15 +1,15 @@
 <?php
-    $typeText;
-    if($type == 1){
-        $typeText =  " €/kg";
-    }
-    if($type == 0){
-        $typeText = " €/tk";
-    }  
+$typeText;
+if ($type == 1) {
+    $typeText = " €/kg";
+}
+if ($type == 0) {
+    $typeText = " €/tk";
+}
 ?>
 
 <div class="product-card">
-    <img src="https://via.placeholder.com/600x400.jpg" alt="pilt">
+    <img src="https://via.placeholder.com/600x400.jpg" width="300" height="200" alt="pilt">
     <h3><?php echo $name ?></h3>
     <div class="price"><?php echo $price . $typeText ?></div>
     <div class="amount-container">
@@ -22,7 +22,19 @@
         </button>
     </div>
     <select name="farm" class="farm-select" required>
-    <option value="" selected>Juhuslik talu</option>
+        <option value="" selected>Juhuslik talu</option>
+        <?php
+        $values = $farms;
+
+        foreach ($farms as $product_id => $farm) {
+            if ($product_id == $id) {
+                foreach ($farm as $item) {
+                    echo '<option value="' . $item->talu_toote_id . '">' . $item->nimi . '</option>';
+                }
+                break;
+            }
+        }
+        ?>
     </select>
     <button class="add-to-cart" data-id="<?php echo $id ?>">
         <?php $icons->get('shopping-cart');?>

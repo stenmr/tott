@@ -135,7 +135,7 @@ Flight::route('/talu/minu_tooted', function () {
 
     $pdo = Flight::db();
 
-    $sql = 'SELECT TALU_TOODE.kogus, TALU_TOODE.TALU_talu_id, TOODE.nimi, TOODE.hind, TOODE.yhik_kg_mitte_tk, TOODE.pilt 
+    $sql = 'SELECT TALU_TOODE.kogus, TALU_TOODE.TALU_talu_id, TOODE.nimi, TOODE.hind, TOODE.yhik_kg_mitte_tk, TOODE.pilt
     FROM TOODE JOIN TALU_TOODE on TOODE_toote_id = toote_id';
 
     $stmt = $pdo->prepare($sql);
@@ -284,7 +284,7 @@ Flight::route('/(@category)', function ($category) {
     if (isset($category)) {
         $sql = 'SELECT * FROM TOODE WHERE kategooria = :category';
     } else {
-        $sql = 'SELECT * FROM TOODE LIMIT 15';
+        $sql = 'SELECT * FROM TOODE';
     }
 
     $stmt = $pdo->prepare($sql);
@@ -294,24 +294,23 @@ Flight::route('/(@category)', function ($category) {
     $stmt->execute();
 
     $result = $stmt->fetchAll();
-
     $farms = [];
 
-    $sql2 = 'SELECT talu_toote_id FROM TALU_TOODE JOIN TOODE ON toote_id = TOODE_toote_id JOIN TALU ON talu_id = TALU_talu_id WHERE TOODE_toote_id = :product_id';
-
     // Selline asi on ilmselt kriminaalne
-    foreach ($result as $_) {
+    foreach ($result as $card) {
+        $sql2 = 'SELECT TALU_TOODE.`talu_toote_id`, TALU.`nimi` FROM TALU_TOODE JOIN TOODE ON toote_id = TOODE_toote_id JOIN TALU ON talu_id = TALU_talu_id WHERE TOODE_toote_id = :product_id';
         $stmt2 = $pdo->prepare($sql2);
-        $stmt2->bindParam(":product_id", $result->toote_id);
+        $id = $card->toote_id;
+        $stmt2->bindParam(":product_id", $id, PDO::PARAM_INT);
         $stmt2->execute();
-        $result2 = $stmt->fetchAll();
-        $farms[$result->toote_id] = $result2->talu_toote_id;
+        $result2 = $stmt2->fetchAll();
+        $farms[$card->toote_id] = $result2;
     }
 
     // Head tuleb alati laadida esimesena, ülejäänud soovitud renderdamise järjekorras
     Flight::render("head.php");
     Flight::render("navbar.php");
-    Flight::render("home.php", array('cards' => $result, 'farms' => $farms));
+    Flight::render("home.php", array('cards_farms' => ['cards' => $result, 'farms' => $farms]));
     Flight::render("footer.php");
 });
 
@@ -404,5 +403,3 @@ Flight::route('POST /api/v1/filter', function () {
 
 Flight::start()
 ?>
-
-
