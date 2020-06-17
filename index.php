@@ -284,10 +284,23 @@ Flight::route('/(@category)', function ($category) {
 
     $result = $stmt->fetchAll();
 
+    $farms = [];
+
+    $sql2 = 'SELECT talu_toote_id FROM TALU_TOODE JOIN TOODE ON toote_id = TOODE_toote_id JOIN TALU ON talu_id = TALU_talu_id WHERE TOODE_toote_id = :product_id';
+
+    // Selline asi on ilmselt kriminaalne
+    foreach ($result as $_) {
+        $stmt2 = $pdo->prepare($sql2);
+        $stmt2->bindParam(":product_id", $result->toote_id);
+        $stmt2->execute();
+        $result2 = $stmt->fetchAll();
+        $farms[$result->toote_id] = $result2->talu_toote_id;
+    }
+
     // Head tuleb alati laadida esimesena, ülejäänud soovitud renderdamise järjekorras
     Flight::render("head.php");
     Flight::render("navbar.php");
-    Flight::render("home.php", array('cards' => $result));
+    Flight::render("home.php", array('cards' => $result, 'farms' => $farms));
     Flight::render("footer.php");
 });
 
