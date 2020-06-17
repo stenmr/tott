@@ -21,7 +21,6 @@
         </noscript>
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script src="../assets/js/common.js" async defer></script>
-        <script src="https://code.jquery.com/jquery-2.2.4.js" async charset="utf-8"></script>
         <script src="../assets/js/shoppingCart.js" async defer></script>
         <script src="../assets/js/categories.js" async defer></script>
 
