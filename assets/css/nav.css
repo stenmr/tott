@@ -1,31 +1,39 @@
+:root {
+    --shadow: 0 4px 8px hsla(0, 0%, 27%, .15);
+    --shadow-alt: 6px 6px 18px 0 rgba(0, 0, 0, .08);
+    --main-color: linear-gradient(-33deg, hsl(133, 48%, 62%), hsl(133, 55%, 62%));
+    --main-color-solid: hsl(133, 48%, 62%);
+    --main-color-hover: hsl(133, 48%, 68%);
+    --secondary-color: hsl(133, 48%, 75%);
+    --font-color: #224;
+    --tint-1: #fff;
+    --tint-2: hsl(133, 48%, 97%);
+    --dark-gray: rgb(138, 142, 138);
+    --gray: hsl(131, 10%, 78%);
+    --light-gray: hsl(131, 10%, 90%);
+}
+
 .navlink:link {
-    color: black;
+    color: var(--font-color);
     text-decoration: none;
 }
 
 .navlink {
     font-size: 1rem;
-    color: black;
+    color: var(--font-color);
 }
 
 .basket {
-    background-color: rgba(255, 255, 255, 0.5);
-    border-radius: 4px;
-    padding: 4px;
+    margin-left: auto;
 }
 
-.basket:hover {
-    cursor: pointer;
-    background-color: rgba(255, 255, 255, 0.6);
-    
+.logout, .my-account, .basket {
+    font-weight: 500;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-.basket:active{
-    color: black;
-    text-decoration: none;
-}
-
-.basket:visited{
-    color: black;
-    text-decoration: none;
+.logout {
+    background-color: var(--secondary-color);
 }
