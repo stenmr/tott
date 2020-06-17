@@ -75,14 +75,14 @@ nav > * {
     box-shadow: var(--shadow);
     border-radius: .5em;
     height: max-content;
-    width: 13em;
+    width: 16em;
     overflow: hidden;
     margin: 0 .75em .75em .75em;
     text-align: center;
 }
 
 .product-card > img {
-    width: 13em;
+    width: 16em;
 }
 
 .product-card > h3 {
@@ -106,6 +106,12 @@ nav > * {
     cursor: pointer;
 }
 
+.farm-select {
+    margin-top: 0.75em;
+    width: 100%;
+    border: none;
+}
+
 .category {
     margin: 0.33rem;
     text-transform: uppercase;
@@ -121,6 +127,7 @@ nav > * {
 }
 
 .category_box {
+    min-width: 16rem;
     box-shadow: var(--shadow);
 }
 
@@ -140,6 +147,7 @@ select {
     border: 2px solid var(--gray);
     border-radius: 0;
     padding: .5rem .25rem;
+    text-align: center;
 }
 
 label {

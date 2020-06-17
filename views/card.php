@@ -21,8 +21,8 @@
             <?php $icons->get('plus');?>
         </button>
     </div>
-    <select name="farm" required>
-    <option value="" selected disabled>Või vali kindel talu</option>
+    <select name="farm" class="farm-select" required>
+    <option value="" selected disabled>Juhuslik talu</option>
     </select>
     <div class="add-to-cart" data-id="<?php echo $id ?>">
         <?php $icons->get('shopping-cart');?>
