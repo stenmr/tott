@@ -32,10 +32,15 @@
     font-size: 1rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    text-decoration: none;
 }
 
 .basket:visited, .my-account:visited {
     color: var(--font-color);
+}
+
+.basket:hover, .my-account:hover {
+    text-decoration: underline;
 }
 
 .logout {
