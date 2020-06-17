@@ -1,9 +1,24 @@
-.account_container {
-    display: grid;
-    grid-template-columns: 20vw 80vw;
+:root {
+    --shadow: 0 4px 8px hsla(0, 0%, 27%, .15);
+    --shadow-alt: 6px 6px 18px 0 rgba(0, 0, 0, .08);
+    --main-color: linear-gradient(-33deg, hsl(133, 48%, 62%), hsl(133, 55%, 62%));
+    --main-color-solid: hsl(133, 48%, 62%);
+    --main-color-hover: hsl(133, 48%, 68%);
+    --font-color: #224;
+    --tint-1: #fff;
+    --tint-2: hsl(133, 48%, 97%);
+    --dark-gray: rgb(138, 142, 138);
+    --gray: hsl(131, 10%, 78%);
+    --light-gray: hsl(131, 10%, 90%);
 }
 
-.menu {
+.account_container {
+    display: flex;
+    flex: 1 0;
+}
+
+aside > * {
+    display: block;
     margin: 10px;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -12,13 +27,8 @@
     border-radius: 4px;
 }
 
-.menu:hover {
-    cursor: pointer;
-    background-color: var(--light-gray);
-}
-
-.menu:active {
-    background-color: var(--light-gray);
+aside > *:hover {
+    text-decoration: underline;
 }
 
 .menu_box {
@@ -37,38 +47,38 @@
 }
 
 button {
-    padding: 0.1rem;
-    margin-bottom: 8px;
-
+    font-size: 0.85em;
 }
- a:link {
-     color: black;
-     text-decoration: none;
- }
 
- a:hover {
-    color: black;
+a:link {
+    color: var(--font-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--font-color);
+    text-decoration: underline;
 }
 
 a:active {
-    color: black;
+    color: var(--font-color);
 }
 
 a:visited {
-    color: black;
+    color: var(--font-color);
+}
+
+a[href="/talu/lisa/uus"] {
+    text-decoration: underline;
 }
 
 #save_contact {
     margin-top: 1em;
 }
 
-#cancel {
-    margin-top: 0.5em;
-    background-color: rgb(221, 221, 221);
-}
-
 .order {
-    padding-left: 50px;
-    padding-right: 50vw;
-    text-align: left;
+    padding: 2em;
+    text-align: start;
+    display: flex;
+    flex-direction: column;
 }

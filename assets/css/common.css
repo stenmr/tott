@@ -140,9 +140,10 @@ nav > * {
     background-color: var(--tint-1);
 }
 
-.category_box {
+aside {
     min-width: 16rem;
     box-shadow: var(--shadow);
+    display: block;
 }
 
 /* Form ja selle inputid */
