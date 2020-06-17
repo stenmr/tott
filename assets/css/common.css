@@ -65,7 +65,6 @@ nav > * {
 
 .products {
     grid-column: 2;
-    margin: 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center; 
@@ -77,7 +76,7 @@ nav > * {
     height: max-content;
     width: 16em;
     overflow: hidden;
-    margin: 0 .75em .75em .75em;
+    margin: 1em;
     text-align: center;
 }
 
@@ -102,10 +101,6 @@ nav > * {
     cursor: pointer;
 }
 
-.add-to-cart:hover {
-    cursor: pointer;
-}
-
 .farm-select {
     margin-top: 0.75em;
     width: 100%;
@@ -125,9 +120,14 @@ nav > * {
     border-radius: 4px;
 }
 
-.add-to-cart,
 .price {
     margin: 10px;
+}
+
+.add-to-cart{
+    width: 100%;
+    border-radius: 0;
+    background-color: var(--tint-1);
 }
 
 .category_box {

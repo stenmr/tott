@@ -22,9 +22,13 @@
         </button>
     </div>
     <select name="farm" class="farm-select" required>
+<<<<<<< HEAD
     <option class="farm-center" value="" selected disabled>Juhuslik talu</option>
+=======
+    <option value="" selected>Juhuslik talu</option>
+>>>>>>> 9a09077f5cf25958669a0c0464aa7aa1374c755c
     </select>
-    <div class="add-to-cart" data-id="<?php echo $id ?>">
+    <button class="add-to-cart" data-id="<?php echo $id ?>">
         <?php $icons->get('shopping-cart');?>
-    </div>
+    </button>
 </div>
