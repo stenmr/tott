@@ -112,6 +112,10 @@ nav > * {
     border: none;
 }
 
+.farm-center {
+    text-align: center; 
+}
+
 .category {
     margin: 0.33rem;
     text-transform: uppercase;
