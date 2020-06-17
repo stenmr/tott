@@ -13,54 +13,14 @@
         
 
         <div class="products">
-            <div class="product-card">
-                <img src="https://via.placeholder.com/600x400.jpg" alt="pilt">
-                <h3>Kartulid</h3>
-                <div class="price">Siia tuleb hind</div>
-                <p>Muuda kogust:</p>
-                <div class="amount-container">
-                    <div class="minus">
-                        <?php $icons->get('minus');?>
-                    </div>
-                    <input type="text" id="amount" class="amount" value="0" min="0.5" step="0.5">
-                    <div class="plus">
-                        <?php $icons->get('plus');?>
-                    </div>
-                </div>  
-                <button type="submit">Salvesta</button> 
-            </div>
-            <div class="product-card">
-                <img src="https://via.placeholder.com/600x400.jpg" alt="pilt">
-                <h3>Kartulid</h3>
-                <div class="price">Siia tuleb hind</div>
-                <p>Muuda kogust:</p>
-                <div class="amount-container">
-                    <div class="minus">
-                        <?php $icons->get('minus');?>
-                    </div>
-                    <input type="text" id="amount" class="amount" value="0" min="0.5" step="0.5">
-                    <div class="plus">
-                        <?php $icons->get('plus');?>
-                    </div>
-                </div>  
-                <button type="submit">Salvesta</button> 
-            </div>
-            <div class="product-card">
-                <img src="https://via.placeholder.com/600x400.jpg" alt="pilt">
-                <h3>Kartulid</h3>
-                <div class="price">Siia tuleb hind</div>
-                <p>Muuda kogust:</p>
-                <div class="amount-container">
-                    <div class="minus">
-                        <?php $icons->get('minus');?>
-                    </div>
-                    <input type="text" id="amount" class="amount" value="0" min="0.5" step="0.5">
-                    <div class="plus">
-                        <?php $icons->get('plus');?>
-                    </div>
-                </div>
-                <button type="submit">Salvesta</button>   
-            </div>
+        <?php
+        foreach ($myproducts as $card) {
+            $name = $card->nimi;
+            $price = $card->hind;
+            $type = $card->yhik_kg_mitte_tk;
+            include 'mycard.php';
+        }
+        ?>
         </div>
     </div>
 

@@ -132,9 +132,20 @@ Flight::route('/talu', function () {
 });
 
 Flight::route('/talu/minu_tooted', function () {
+
+    $pdo = Flight::db();
+
+    $sql = 'SELECT TALU_TOODE.kogus, TALU_TOODE.TALU_talu_id, TOODE.nimi, TOODE.hind, TOODE.yhik_kg_mitte_tk, TOODE.pilt 
+    FROM TOODE JOIN TALU_TOODE on TOODE_toote_id = toote_id';
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+
+    $result = $stmt->fetchAll();
+
     Flight::render("head.php");
     Flight::render("navbar.php");
-    Flight::render("myproducts.php");
+    Flight::render("myproducts.php", array('myproducts' => $result));
     Flight::render("footer.php");
 });
 
