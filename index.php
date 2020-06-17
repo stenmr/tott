@@ -112,6 +112,12 @@ Flight::route('/ostukorv', function () {
     Flight::render("cart.php");
     Flight::render("footer.php");
 });
+Flight::route('/maksma', function () {
+    Flight::render("head.php");
+    Flight::render("navbar.php");
+    Flight::render("pay.php");
+    Flight::render("footer.php");
+});
 Flight::route('/kkk', function () {
     Flight::render("head.php");
     Flight::render("navbar.php");
@@ -374,3 +380,5 @@ Flight::route('POST /api/v1/filter', function () {
 
 Flight::start()
 ?>
+
+
