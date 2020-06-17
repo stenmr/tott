@@ -11,6 +11,12 @@ function onFailure(error) {
     console.error(error);
 }
 
+let logout = document.getElementsByClassName('logout')[0];
+
+if (logout){
+    logout.addEventListener('click', signOut);
+}
+
 function signOut() {
     const auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(() => {
