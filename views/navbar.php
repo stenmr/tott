@@ -1,4 +1,5 @@
 <?php $icons = new Feather\Icons;?>
+
 <head>
     <link rel="stylesheet" type="text/css" href="../assets/css/nav.css">
 </head>
@@ -14,6 +15,12 @@
         </a>
     </div>
 
-    <div class="g-signin2" data-width="240" data-height="50" data-longtitle="true" data-onsuccess="onSuccess"
-        data-onfailure="onFailure"></div>
+    <?php
+    session_start();
+    if (isset($_SESSION['email'])) {
+        echo '<a href="/konto" class="my-account">Minu konto</a>';
+    } else {
+        echo '<div class="g-signin2" data-width="240" data-height="50" data-longtitle="true" data-onsuccess="onSuccess" data-onfailure="onFailure"></div>';
+    }
+    ?>
 </nav>

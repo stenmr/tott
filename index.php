@@ -342,7 +342,7 @@ Flight::route('POST /api/v1/tokensignin', function () {
 
             $stmt->execute();
         }
-
+        session_start();
         $_SESSION['email'] = $email;
     } else {
         // Invalid ID token
