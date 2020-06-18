@@ -9,7 +9,7 @@
     --tint-2: hsl(133, 48%, 97%);
     --dark-gray: rgb(138, 142, 138);
     --gray: hsl(131, 10%, 78%);
-    --light-gray: hsl(131, 10%, 90%);
+    --light-gray: hsl(131, 2%, 90%);
 }
 
 body {
@@ -27,8 +27,6 @@ p,
 a {
     font-size: 1.25rem;
 }
-
-
 
 nav {
     background: var(--main-color);
@@ -67,7 +65,7 @@ nav > * {
     grid-column: 2;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; 
+    justify-content: center;
 }
 
 .product-card {
@@ -106,23 +104,24 @@ nav > * {
 .myamount {
     align-content: center;
 }
+
 .plus:hover,
 .minus:hover {
     cursor: pointer;
 }
 
 .farm-select {
-    margin-top: 0.75em;
+    margin-top: .75em;
     width: 100%;
     border: none;
 }
 
 .farm-center {
-    text-align: center; 
+    text-align: center;
 }
 
 .category {
-    margin: 0.33rem;
+    margin: .33rem;
     text-transform: uppercase;
     letter-spacing: 2px;
     padding: .5em 0 .5em .5em;
@@ -134,7 +133,7 @@ nav > * {
     margin: 10px;
 }
 
-.add-to-cart{
+.add-to-cart {
     width: 100%;
     border-radius: 0;
     background-color: var(--tint-1);
@@ -162,6 +161,7 @@ select {
     border: 2px solid var(--gray);
     border-radius: 0;
     padding: .5rem .25rem;
+    background-color: var(--light-gray);
 }
 
 label {
@@ -202,7 +202,7 @@ button {
     font-size: 1.5em;
     border: none;
     border-radius: 4px;
-    padding: 0.75rem;
+    padding: .75rem;
     box-shadow: 0;
     transition: box-shadow, background-color .25s ease;
     text-transform: uppercase;
@@ -214,9 +214,10 @@ button:hover {
     background-color: var(--main-color-hover);
 }
 
-.minus, .plus {
+.minus,
+.plus {
     display: flex;
-    padding: 0.33em;
+    padding: .33em;
     border-radius: 9999px;
 }
 
@@ -225,14 +226,14 @@ button:hover {
     background-color: var(--light-gray);
 }
 
-footer{
+footer {
     background: var(--main-color);
     display: flex;
     align-items: center;
     margin-top: auto;
 }
 
-.kkk{
+.kkk {
     padding-left: 10px;
     padding-right: 10px;
 }

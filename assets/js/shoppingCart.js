@@ -4,10 +4,10 @@ for (const item of [document.getElementsByClassName('minus'), document.getElemen
             const input = Array.from(this.parentElement.childNodes).find(x => x.tagName === 'INPUT');
             if (Array.from(this.classList).includes('plus')) {
                 input.value = Number(input.value) + 1;
-            } else {
-                if (input.value > 0) input.value = Number(input.value) - 1;
+            } else if (input.value > 0) {
+                input.value = Number(input.value) - 1;
             }
-        })
+        });
     }
 }
 
@@ -32,14 +32,35 @@ for (const element of document.getElementsByClassName('add-to-cart')) {
         const input = Array.from(amountContainer.childNodes)
             .find(x => x.tagName === 'INPUT');
         const id = this.getAttribute('data-id');
+        const productName = Array.from(this.parentElement.childNodes)
+            .find(x => x.tagName === 'H3');
+        const price = Array.from(this.parentElement.childNodes)
+            .find(x => x.className === 'price');
+        const selection = Array.from(this.parentElement.childNodes)
+            .find(x => x.className === 'farm-select');
+        const farmSelection = selection.selectedIndex;
+        const farmName = selection.selectedOptions[0].innerText;
+
         if (shoppingCartMap.has(id)) {
-            const existingValue = shoppingCartMap.get(id);
-            shoppingCartMap.set(id, existingValue + Number(input.value));
+            const existingValue = shoppingCartMap.get(id).amount;
+            shoppingCartMap.set(id, {
+                name: productName.innerText,
+                amount: existingValue + Number(input.value),
+                selection: farmSelection,
+                unitPrice: price.innerText,
+                farmName
+            });
         } else {
-            shoppingCartMap.set(id, Number(input.value));
+            shoppingCartMap.set(id, {
+                name: productName.innerText,
+                amount: Number(input.value),
+                selection: farmSelection,
+                unitPrice: price.innerText,
+                farmName
+            });
         }
         console.log(shoppingCartMap);
 
         sessionStorage.setItem('shopping-cart', JSON.stringify(shoppingCartMap));
-    })
+    });
 }

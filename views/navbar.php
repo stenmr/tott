@@ -15,7 +15,12 @@
     <?php
     session_start();
     if (isset($_SESSION['email'])) {
-        echo '<a href="/konto" class="my-account">Minu konto</a>';
+        if (in_array($_SESSION['email'], $farmers )) {
+            echo '<a href="/talu" class="my-account">Minu talu</a>';
+        } else {
+            echo '<a href="/konto" class="my-account">Minu konto</a>';
+        }
+        
         echo '<button class="logout">Logi välja</button>';
     } else {
         echo '<div class="g-signin2" data-width="240" data-height="50" data-longtitle="true" data-onsuccess="onSuccess" data-onfailure="onFailure"></div>';
