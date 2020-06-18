@@ -10,6 +10,19 @@ $dsn = $dbc['driver'] . ':host=' . $dbc['host'] . ';port=' . $dbc['port'] . ';db
 $username = $dbc['username'];
 $password = $dbc['password'];
 
+
+// Talunikud
+$pdo3 = new PDO($dsn, $username, $password, [
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
+]);
+$sql3 = 'SELECT email FROM ISIK WHERE myyja = 1';
+$stmt3 = $pdo3->prepare($sql3);
+$stmt3->execute();
+
+$farmers = $stmt3->fetchAll();
+Flight::set('farmers', $farmers);
+
 Flight::register('db', 'PDO', array($dsn, $username, $password), function ($db) {
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
@@ -38,14 +51,14 @@ Flight::route('/talu/lisa', function () {
     $result = $stmt->fetchAll();
 
     Flight::render("head.php");
-    Flight::render("navbar.php");
+    Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
     Flight::render("add.php", array('newproducts' => $result));
     Flight::render("footer.php");
 });
 
 Flight::route('GET /talu/lisa/uus', function () {
     Flight::render("head.php");
-    Flight::render("navbar.php");
+    Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
     Flight::render("addnew.php");
     Flight::render("footer.php");
 });
@@ -108,25 +121,25 @@ Flight::route('POST /talu/lisa/uus', function () {
 
 Flight::route('/ostukorv', function () {
     Flight::render("head.php");
-    Flight::render("navbar.php");
+    Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
     Flight::render("cart.php");
     Flight::render("footer.php");
 });
 Flight::route('/maksma', function () {
     Flight::render("head.php");
-    Flight::render("navbar.php");
+    Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
     Flight::render("pay.php");
     Flight::render("footer.php");
 });
 Flight::route('/kkk', function () {
     Flight::render("head.php");
-    Flight::render("navbar.php");
+    Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
     Flight::render("faq.php");
     Flight::render("footer.php");
 });
 Flight::route('/talu', function () {
     Flight::render("head.php");
-    Flight::render("navbar.php");
+    Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
     Flight::render("selleraccount.php");
     Flight::render("footer.php");
 });
@@ -144,35 +157,35 @@ Flight::route('/talu/minu_tooted', function () {
     $result = $stmt->fetchAll();
 
     Flight::render("head.php");
-    Flight::render("navbar.php");
+    Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
     Flight::render("myproducts.php", array('myproducts' => $result));
     Flight::render("footer.php");
 });
 
 Flight::route('/talu/minu_kontakt', function () {
     Flight::render("head.php");
-    Flight::render("navbar.php");
+    Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
     Flight::render("sellercontact.php");
     Flight::render("footer.php");
 });
 
 Flight::route('/talu/minu_tellimused', function () {
     Flight::render("head.php");
-    Flight::render("navbar.php");
+    Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
     Flight::render("sellerorders.php");
     Flight::render("footer.php");
 });
 
 Flight::route('/privaatsus', function () {
     Flight::render("head.php");
-    Flight::render("navbar.php");
+    Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
     Flight::render("privacy.php");
     Flight::render("footer.php");
 });
 
 Flight::route('/tellimused', function () {
     Flight::render("head.php");
-    Flight::render("navbar.php");
+    Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
     Flight::render("orders.php");
     Flight::render("footer.php");
 });
@@ -182,7 +195,7 @@ Flight::route('/administraator', function () {
     session_start();
     if (isset($_SESSION['email']) && in_array($_SESSION['email'], Flight::get('admins'))) {
         Flight::render("head.php");
-        Flight::render("navbar.php");
+        Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
         Flight::render("admin.php");
         Flight::render("footer.php");
     } else {
@@ -204,7 +217,7 @@ Flight::route('GET /administraator/talud', function () {
         $result = $stmt->fetchAll();
 
         Flight::render("head.php");
-        Flight::render("navbar.php");
+        Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
         Flight::render("admin_farms.php", array('farms' => $result));
         Flight::render("footer.php");
     } else {
@@ -232,7 +245,16 @@ Flight::route('POST /administraator/talud', function () {
 
             $stmt->execute();
 
+            $pdo3 = Flight::db();
+            $sql3 = 'SELECT email FROM ISIK WHERE myyja = 1';
+            $stmt3 = $pdo->prepare($sql3);
+            $stmt3->execute();
+
+            $farmers = $stmt3->fetchAll();
+            Flight::set('farmers', $farmers);
+
             Flight::redirect('/administraator/talud');
+
         }
     }
 });
@@ -251,7 +273,7 @@ Flight::route('GET /administraator/kapid', function () {
         $result = $stmt->fetchAll();
 
         Flight::render("head.php");
-        Flight::render("navbar.php");
+        Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
         Flight::render("admin_lockers.php", array('lockers' => $result));
         Flight::render("footer.php");
     } else {
@@ -269,7 +291,7 @@ Flight::route('POST /administraator/kapid', function () {
 // 404 errori leht
 Flight::map('notFound', function () {
     Flight::render("head.php");
-    Flight::render("navbar.php");
+    Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
     Flight::render("notfound.php");
     Flight::render("footer.php");
 });
@@ -289,7 +311,9 @@ Flight::route('/(@category)', function ($category) {
 
     $stmt = $pdo->prepare($sql);
 
-    if (isset($category)) $stmt->bindParam(":category", $category_converted);
+    if (isset($category)) {
+        $stmt->bindParam(":category", $category_converted);
+    }
 
     $stmt->execute();
 
@@ -309,7 +333,7 @@ Flight::route('/(@category)', function ($category) {
 
     // Head tuleb alati laadida esimesena, ülejäänud soovitud renderdamise järjekorras
     Flight::render("head.php");
-    Flight::render("navbar.php");
+    Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
     Flight::render("home.php", array('cards_farms' => ['cards' => $result, 'farms' => $farms]));
     Flight::render("footer.php");
 });
