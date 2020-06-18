@@ -1,6 +1,8 @@
 <?php $icons = new Feather\Icons; ?>
 <head>
 <link rel="stylesheet" type="text/css" href="../assets/css/cart.css">
+<script src="../assets/js/finalShoppingCart.js" async defer></script>
+
 </head>
 <body>
 <section class="items_basket">
