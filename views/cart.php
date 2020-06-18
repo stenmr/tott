@@ -26,5 +26,5 @@
 </div>
 <div class="finalcart">
     <div class="total-price">Summa kokku</div>
-    <a href="/maksma"><input type="submit" value="Esita tellimus" class="button"></a>
+    <a href="/maksma"><input type="submit" value="Esita tellimus" class="button submit_order"></a>
 </div>
