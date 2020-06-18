@@ -19,7 +19,7 @@
         <noscript>
             <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@200..900&display=swap" />
         </noscript>
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
         <script src="../assets/js/common.js" async defer></script>
         <script src="../assets/js/shoppingCart.js" async defer></script>
         <script src="../assets/js/categories.js" async defer></script>
