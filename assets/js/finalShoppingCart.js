@@ -7,6 +7,8 @@
     const shoppingCartMap = new Map(JSON.parse(storage));
     
     const cart = document.getElementsByClassName('items_basket')[0];
+    const totalDiv = document.getElementsByClassName('total-price')[0];
+    let total = 0;
     
     for (const [id, stuff] of shoppingCartMap.entries()) {
 
@@ -21,6 +23,7 @@
         productName.innerText = stuff.name;
         farmName.innerText = stuff.farmName;
         amount.innerText = stuff.amount + " x " + stuff.unitPrice;
+        total += stuff.amount * parseFloat(stuff.unitPrice);
     
         cardDiv.appendChild(productName);
         cardDiv.appendChild(farmName);
@@ -28,6 +31,6 @@
         cart.appendChild(cardDiv);
     }
 
-    
+    totalDiv.innerText += " " + total.toFixed(2) + "€";
 })();
 
