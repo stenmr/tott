@@ -4,7 +4,7 @@ Tegemist on Tallinna Ülikool Informaatika õppekava raames valminud projektiga.
 
 Lõime lehe TLÜ ELU projektile TLÜ OTT. TLÜ OTT projekti põhieesmärgiks oli välja töötada süsteem, mis võimaldab väiketootjate ja talunike kaupa pakkuda mugavalt Tallinna Ülikooli tudengitele ja töötajatele. Meie ülesanne oli luua veebileht, mis seda võimaldaks. Täpsemalt oli meie eesmärgiks luua leht, mis võimaldaks tellida tooteid otse taludelt Tallinna Ülikoolis asuvatesse kapidesse. Samuti oli oluline, et talunikud saaksid oma tooteid ja tellimusi mugavalt hallata.
 
-![]("/media/avaleht.png")
+![]("https://raw.githubusercontent.com/stenmr/tott/master/media/avaleht.png")
 
 ## Kasutatud tehnoloogiad
 
