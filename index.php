@@ -10,11 +10,10 @@ $dsn = $dbc['driver'] . ':host=' . $dbc['host'] . ';port=' . $dbc['port'] . ';db
 $username = $dbc['username'];
 $password = $dbc['password'];
 
-
 // Talunikud
 $pdo3 = new PDO($dsn, $username, $password, [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,
 ]);
 $sql3 = 'SELECT email FROM ISIK WHERE myyja = 1';
 $stmt3 = $pdo3->prepare($sql3);
@@ -32,90 +31,91 @@ Flight::register('db', 'PDO', array($dsn, $username, $password), function ($db) 
 $admins = parse_ini_file('../admins.ini');
 Flight::set('admins', $admins['admins']);
 
-function clog($data)
-{
-    echo '<script>';
-    echo 'console.log(' . json_encode($data) . ')';
-    echo '</script>';
-}
-
 Flight::route('/talu/lisa', function () {
-
-    $pdo = Flight::db();
-
-    $sql = 'SELECT nimi, hind, yhik_kg_mitte_tk FROM TOODE';
-
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
-
-    $result = $stmt->fetchAll();
-
-    Flight::render("head.php");
-    Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
-    Flight::render("add.php", array('newproducts' => $result));
-    Flight::render("footer.php");
-});
-
-Flight::route('GET /talu/lisa/uus', function () {
-    Flight::render("head.php");
-    Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
-    Flight::render("addnew.php");
-    Flight::render("footer.php");
-});
-
-Flight::route('POST /talu/lisa/uus', function () {
-
-    $request = Flight::request();
-
-    $image = $request->data->image_upload;
-    $product_name = $request->data->product_name;
-    $product_type = $request->data->product_type;
-    $price = $request->data->price;
-    $amount = $request->data->amount;
-    $amount_type = $request->data->amount_type;
-
-    if ($image && $product_name && $product_type && $price && $amount && $amount_type) {
+    session_start();
+    if (isset($_SESSION['email']) && in_array($_SESSION['email'], Flight::get('farmers'))) {
 
         $pdo = Flight::db();
 
-        $query = 'SELECT COUNT(TOODE_toote_id) from TOODE';
-        $stmt = $pdo->prepare($query);
-        $stmt->execute();
-        $count = $stmt->fetch();
-
-        $url = 'images/product/' . $count + 1;
-        $img = Image::make($image)->resize(300, 200);
-        $img->save($url, 90);
-
-        $amount_bool = $amount_type == 'kg' ? 1 : 0;
-
-        $sql = 'INSERT INTO TOODE (kategooria, nimi, hind, yhik_kg_mitte_tk, pilt) VALUES (:product_type, :product_name, :price, :amount_type, :image_url)';
+        $sql = 'SELECT nimi, hind, yhik_kg_mitte_tk FROM TOODE';
 
         $stmt = $pdo->prepare($sql);
-
-        $stmt->bindParam(":product_type", $product_type);
-        $stmt->bindParam(":product_name", $product_name);
-        $stmt->bindParam(":price", $price);
-        $stmt->bindParam(":amount_type", $amount_bool);
-        $stmt->bindParam(":image_url", $url);
-
         $stmt->execute();
 
-        $product_id = $pdo->lastInsertId();
+        $result = $stmt->fetchAll();
 
-        $sql2 = 'INSERT INTO TALU_TOODE (kogus, TALU_talu_id, TOODE_toote_id) VALUES (:amount, :farm_id, :product_id)';
+        Flight::render("head.php");
+        Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
+        Flight::render("add.php", array('newproducts' => $result));
+        Flight::render("footer.php");
+    }
+});
 
-        $stmt2 = $pdo->prepare($sql);
+Flight::route('GET /talu/lisa/uus', function () {
+    session_start();
+    if (isset($_SESSION['email']) && in_array($_SESSION['email'], Flight::get('farmers'))) {
+        Flight::render("head.php");
+        Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
+        Flight::render("addnew.php");
+        Flight::render("footer.php");
+    }
+});
 
-        $stmt2->bindParam(":amount", $amount);
+Flight::route('POST /talu/lisa/uus', function () {
+    session_start();
+    if (isset($_SESSION['email']) && in_array($_SESSION['email'], Flight::get('farmers'))) {
+        $request = Flight::request();
 
-        // TODO: Hankida farm_id kusagilt!
-        $stmt2->bindParam(":farm_id", $farm_id);
-        $stmt2->bindParam(":product_id", $product_id);
+        $image = $request->data->image_upload;
+        $product_name = $request->data->product_name;
+        $product_type = $request->data->product_type;
+        $price = $request->data->price;
+        $amount = $request->data->amount;
+        $amount_type = $request->data->amount_type;
 
-        $stmt2->execute();
-    } else {
-        echo "Midagi läks valesti.";
+        if ($image && $product_name && $product_type && $price && $amount && $amount_type) {
+
+            $pdo = Flight::db();
+
+            $query = 'SELECT COUNT(TOODE_toote_id) from TOODE';
+            $stmt = $pdo->prepare($query);
+            $stmt->execute();
+            $count = $stmt->fetch();
+
+            $url = 'images/product/' . $count + 1;
+            $img = Image::make($image)->resize(300, 200);
+            $img->save($url, 90);
+
+            $amount_bool = $amount_type == 'kg' ? 1 : 0;
+
+            $sql = 'INSERT INTO TOODE (kategooria, nimi, hind, yhik_kg_mitte_tk, pilt) VALUES (:product_type, :product_name, :price, :amount_type, :image_url)';
+
+            $stmt = $pdo->prepare($sql);
+
+            $stmt->bindParam(":product_type", $product_type);
+            $stmt->bindParam(":product_name", $product_name);
+            $stmt->bindParam(":price", $price);
+            $stmt->bindParam(":amount_type", $amount_bool);
+            $stmt->bindParam(":image_url", $url);
+
+            $stmt->execute();
+
+            $product_id = $pdo->lastInsertId();
+
+            $sql2 = 'INSERT INTO TALU_TOODE (kogus, TALU_talu_id, TOODE_toote_id) VALUES (:amount, :farm_id, :product_id)';
+
+            $stmt2 = $pdo->prepare($sql);
+
+            $stmt2->bindParam(":amount", $amount);
+
+            // TODO: Hankida farm_id kusagilt!
+            $stmt2->bindParam(":farm_id", $farm_id);
+            $stmt2->bindParam(":product_id", $product_id);
+
+            $stmt2->execute();
+        } else {
+            echo "Midagi läks valesti.";
+        }
     }
 });
 
@@ -138,42 +138,53 @@ Flight::route('/kkk', function () {
     Flight::render("footer.php");
 });
 Flight::route('/talu', function () {
-    Flight::render("head.php");
-    Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
-    Flight::render("selleraccount.php");
-    Flight::render("footer.php");
+    session_start();
+    if (isset($_SESSION['email']) && in_array($_SESSION['email'], Flight::get('farmers'))) {
+        Flight::render("head.php");
+        Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
+        Flight::render("selleraccount.php");
+        Flight::render("footer.php");
+    }
 });
 
 Flight::route('/talu/minu_tooted', function () {
+    session_start();
+    if (isset($_SESSION['email']) && in_array($_SESSION['email'], Flight::get('farmers'))) {
+        $pdo = Flight::db();
 
-    $pdo = Flight::db();
-
-    $sql = 'SELECT TALU_TOODE.kogus, TALU_TOODE.TALU_talu_id, TOODE.nimi, TOODE.hind, TOODE.yhik_kg_mitte_tk, TOODE.pilt
+        $sql = 'SELECT TALU_TOODE.kogus, TALU_TOODE.TALU_talu_id, TOODE.nimi, TOODE.hind, TOODE.yhik_kg_mitte_tk, TOODE.pilt
     FROM TOODE JOIN TALU_TOODE on TOODE_toote_id = toote_id';
 
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
 
-    $result = $stmt->fetchAll();
+        $result = $stmt->fetchAll();
 
-    Flight::render("head.php");
-    Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
-    Flight::render("myproducts.php", array('myproducts' => $result));
-    Flight::render("footer.php");
+        Flight::render("head.php");
+        Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
+        Flight::render("myproducts.php", array('myproducts' => $result));
+        Flight::render("footer.php");
+    }
 });
 
 Flight::route('/talu/minu_kontakt', function () {
-    Flight::render("head.php");
-    Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
-    Flight::render("sellercontact.php");
-    Flight::render("footer.php");
+    session_start();
+    if (isset($_SESSION['email']) && in_array($_SESSION['email'], Flight::get('farmers'))) {
+        Flight::render("head.php");
+        Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
+        Flight::render("sellercontact.php");
+        Flight::render("footer.php");
+    }
 });
 
 Flight::route('/talu/minu_tellimused', function () {
-    Flight::render("head.php");
-    Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
-    Flight::render("sellerorders.php");
-    Flight::render("footer.php");
+    session_start();
+    if (isset($_SESSION['email']) && in_array($_SESSION['email'], Flight::get('farmers'))) {
+        Flight::render("head.php");
+        Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
+        Flight::render("sellerorders.php");
+        Flight::render("footer.php");
+    }
 });
 
 Flight::route('/privaatsus', function () {
@@ -191,7 +202,7 @@ Flight::route('/tellimused', function () {
 });
 
 Flight::route('/administraator', function () {
-    // Kui sessiooni email on üks admini emalidest
+    // Kui sessiooni email on üks admini emailidest
     session_start();
     if (isset($_SESSION['email']) && in_array($_SESSION['email'], Flight::get('admins'))) {
         Flight::render("head.php");
