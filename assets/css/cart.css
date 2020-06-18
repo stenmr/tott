@@ -1,11 +1,10 @@
 .item{
-    padding-top: 2em;
-    padding-left: 2em;
     font-size: large;
     display: flex;
     flex-direction: row;
     letter-spacing: 2px;
     text-transform: uppercase;
+    padding-top: 1em;
     }
 
 .delete:hover {
@@ -31,21 +30,48 @@
 }
 
 .submit_order {
-    background-color: lightgrey;
+    background-color: var(--main-color-solid);
     font-family: "Jost", sans-serif;
     font-size: 1.5em;
     border: none;
     border-radius: 4px;
     padding: 0.75rem;
     box-shadow: 0;
-    transition: box-shadow, background-color .25s ease;
-    text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+.submit_order:hover {
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .delete:hover {
     cursor: pointer;
     background-color: rgb(223, 126, 126);
+}
+
+.submit_link {
+    color: black;
+    text-decoration: none;
+}
+
+.submit_link:hover {
+    cursor: pointer;
+}
+
+section{
+    box-shadow: var(--shadow);
+    border-radius: .5em;
+    padding: 2em;
+}
+
+.items_basket{
+    text-transform: lowercase;
+}
+
+.item_part {
+    margin-right: 2em;
+    margin-top: 1em;
 }
 
 
