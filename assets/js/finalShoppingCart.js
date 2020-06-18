@@ -1,27 +1,33 @@
-if (!sessionStorage.hasItem('shopping-cart')) {
-    return;
-}
+(function() {
+    if (!sessionStorage.getItem('shopping-cart')) {
+        return;
+    }
+    
+    const storage = sessionStorage.getItem('shopping-cart');
+    const shoppingCartMap = new Map(JSON.parse(storage));
+    
+    const cart = document.getElementsByClassName('items_basket')[0];
+    
+    for (const [id, stuff] of shoppingCartMap.entries()) {
 
-const storage = sessionStorage.getItem('shopping-cart');
-const shoppingCartMap = new Map(JSON.parse(storage));
+        const cardDiv = document.createElement('div');
+        cardDiv.classList.add('product-card');
 
-let cart = document.getElementsByClassName('shopping-cart');
+        const productName = document.createElement('h3');
 
+        const farmName = document.createElement('div');
+        const amount = document.createElement('div');
+    
+        productName.innerText = stuff.name;
+        farmName.innerText = stuff.farmName;
+        amount.innerText = stuff.amount + " x " + stuff.unitPrice;
+    
+        cardDiv.appendChild(productName);
+        cardDiv.appendChild(farmName);
+        cardDiv.appendChild(amount);
+        cart.appendChild(cardDiv);
+    }
 
-for (const [id, stuff] of shoppingCartMap.entries()) {
-    let cardDiv = document.createElement('div');
-    let farmName = document.createElement('farmname');
-    let amount = document.createElement('amount');
-    let unitPrice = document.createElement('unitPrice')
+    
+})();
 
-    cardDiv.value = stuff.name;
-    farmName.value = stuff.farmName;
-    amount.value = stuff.amount;
-    unitPrice.value = stuff.unitPrice;
-
-
-    cardDiv.appendChild(farmName);
-    cardDiv.appendChild(amount);
-    cardDiv.appendChild(unitPrice);
-
-}

@@ -203,14 +203,14 @@ Flight::route('/tellimused', function () {
 
 Flight::route('/administraator', function () {
     // Kui sessiooni email on üks admini emailidest
-    session_start();
     if (isset($_SESSION['email']) && in_array($_SESSION['email'], Flight::get('admins'))) {
         Flight::render("head.php");
         Flight::render("navbar.php", array('farmers' => Flight::get('farmers')));
         Flight::render("admin.php");
         Flight::render("footer.php");
     } else {
-        Flight::redirect("/");
+        # Flight::redirect("/");
+        print_r($_SESSION['email']);
     }
 });
 

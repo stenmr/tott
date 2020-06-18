@@ -22,7 +22,6 @@
         <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
         <script src="../assets/js/common.js" async defer></script>
         <script src="../assets/js/shoppingCart.js" async defer></script>
-        <script src="../assets/js/categories.js" async defer></script>
 
         <meta name="google-signin-client_id"
             content="692603051438-unrghma1s7ihcge3rku3h7l45pmlsqjm.apps.googleusercontent.com">
